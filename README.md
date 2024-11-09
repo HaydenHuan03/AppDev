@@ -1,6 +1,12 @@
-# utm_courtify
+# UTM Courtify
 
-A new Flutter project.
+A new Flutter project from Group Superlollipop to help UTMians to have a better user experience on booking courts at UTM Sports Hall. With the help of this application, UTM students are able to create an account with their UTM email to use this application. This ensures that only UTM students can enjoy this service but not others. This application includes the fuinctions below:
+
+###1. Real-time booking system
+###2. Shopping and Rental Sports Equipment
+###3. Promotions and Campaign 
+###4. User Management
+ 
 
 ## Getting Started
 
