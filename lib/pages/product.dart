@@ -1,3 +1,5 @@
+// From Eddy - Subsystem 2
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 // Products list
