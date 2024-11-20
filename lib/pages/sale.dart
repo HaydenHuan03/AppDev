@@ -1,3 +1,5 @@
+// From Eddy - Subsystem 2
+
 import 'package:flutter/material.dart';
 import 'cart.dart';
 import 'product.dart';
