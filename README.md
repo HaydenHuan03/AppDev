@@ -12,7 +12,6 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 ### Member 1: Hayden Huan Kee Jiun
 Sprint 1:
 <table>
-
 <tr>
 <th> No
 <th> Source code
@@ -28,11 +27,11 @@ Sprint 1:
 <th><a href="lib/home.dart">click me</a>
 </tr>
 </table>
+
 
 ### Member 2: Eddy Koh Wei Hen
 Sprint 1:
 <table>
-
 <tr>
 <th> No
 <th> Source code
@@ -42,16 +41,23 @@ Sprint 1:
 
 <tr>
 <th> 1
-<th> update later
-<th> -
-<th><a href="lib/home.dart">click me</a>
+<th> sale.dart
+<th> Interface of sale feature
+<th><a href="lib/frontend/sale.dart">click me</a>
+</tr>
+
+<tr>
+<th> 2
+<th> cart.dart
+<th> Interface of shopping cart feature
+<th><a href="lib/frontend/cart.dart">click me</a>
 </tr>
 </table>
+
 
 ### Member 3: Ooi Wei Sian
 Sprint 1:
 <table>
-
 <tr>
 <th> No
 <th> Source code
@@ -67,10 +73,10 @@ Sprint 1:
 </tr>
 </table>
 
+
 ### Member 4: Chan Qing Yee
 Sprint 1:
 <table>
-
 <tr>
 <th> No
 <th> Source code
