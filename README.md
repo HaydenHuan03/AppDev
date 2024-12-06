@@ -42,7 +42,6 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> Library from Firebase (All members contribute together)
 <th><a href="lib/firebase_options.dart">click me</a>
 </tr>
-</table>
 
 <tr>
 <th> 2
@@ -50,6 +49,8 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> Library from Firebase (All members contribute together)
 <th><a href="lib/data/court_service.dart">click me</a>
 </tr>
+</table>
+
 </table>
 
 ### Others
@@ -68,6 +69,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th><a href="pubspec.yaml">pubspec.yaml</a>
 </tr>
 
+</table>
 <br>
 
 ## Member 2: Eddy Koh Wei Hen
