@@ -45,6 +45,23 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
+### Others
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> update later
+<th> -
+<th><a href="lib/home.dart">click me</a>
+</tr>
+</table>
+
 
 ## Member 2: Eddy Koh Wei Hen
 ### FRONT-END CODING 
@@ -84,7 +101,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 1
 <th> product.dart
-<th> Information about product
+<th> Information about products
 <th><a href="lib/backend/product.dart">click me</a>
 </tr>
 
@@ -93,6 +110,23 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> product_service.dart
 <th> Firebase Firestore service methods for managing products
 <th><a href="lib/backend/product_service.dart">click me</a>
+</tr>
+</table>
+
+### Others
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> update later
+<th> -
+<th><a href="lib/home.dart">click me</a>
 </tr>
 </table>
 
@@ -133,6 +167,23 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
+### Others
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> update later
+<th> -
+<th><a href="lib/home.dart">click me</a>
+</tr>
+</table>
+
 
 ## Member 4: Chan Qing Yee
 ### FRONT-END CODING 
@@ -167,6 +218,23 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th>firebase_options.dart
 <th> Library from Firebase
 <th><a href="lib/const/firebase_options.dart">click me</a>
+</tr>
+</table>
+
+### Others
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> update later
+<th> -
+<th><a href="lib/home.dart">click me</a>
 </tr>
 </table>
 
