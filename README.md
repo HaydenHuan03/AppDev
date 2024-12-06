@@ -8,15 +8,136 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 4. User Management
  
 
-## Getting Started
+## FRONT-END CODING 
+### Member 1: Hayden Huan Kee Jiun
+Sprint 1:
+<table>
 
-This project is a starting point for a Flutter application.
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
 
-A few resources to get you started if this is your first Flutter project:
+<tr>
+<th> 1
+<th> Home.dart
+<th> Home page of application
+<th><a href="lib/page/home.dart">click me</a>
+</tr>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<tr>
+<th> 2
+<th> Interface.dart
+<th> Interface of application
+<th><a href="lib/page/interface.dart">click me</a>
+</tr>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<tr>
+<th> 3
+<th>Login.dart
+<th> Login page of application
+<th><a href="lib/page/login.dart">click me</a>
+</tr>
+
+<tr>
+<th> 4
+<th>Registration.dart
+<th> Registration page of application
+<th><a href="lib/page/registration.dart">click me</a>
+</tr>
+</table>
+
+### Member 2: Eddy Koh Wei Hen
+Sprint 1:
+<table>
+
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> update later
+<th> -
+<th><a href="lib/page/home.dart">click me</a>
+</tr>
+</table>
+
+### Member 3: Ooi Wei Sian
+Sprint 1:
+<table>
+
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> update later
+<th> -
+<th><a href="lib/page/home.dart">click me</a>
+</tr>
+</table>
+
+### Member 4: Chan Qing Yee
+Sprint 1:
+<table>
+
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> update later
+<th> -
+<th><a href="lib/page/home.dart">click me</a>
+</tr>
+</table>
+
+## BACK-END CODING
+<table>
+
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th>firebase_options.dart
+<th> Library from Firebase
+<th><a href="lib/const/firebase_options.dart">click me</a>
+</tr>
+</table>
+
+## THEME CONSTANT CODING
+<table>
+
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th>theme.dart
+<th> Theme of the Application
+<th><a href="lib/const/theme.dart">click me</a>
+</tr>
+</table>
