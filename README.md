@@ -126,7 +126,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 1
 <th> Image 
 <th> The images used for the system
-<th><a href="images/Drinks">Drinks</a>
+<th><a href="images/Drinks">Drinks</a><br>
     <a href="images/Shirt">Shirt</a>
 </tr>
 </table>
