@@ -75,13 +75,20 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 1
+<th> main.dart
+<th> Main file of the application (All members contribute together)
+<th><a href="lib/main.dart">click me</a>
+</tr>
+
+<tr>
+<th> 2
 <th> sale.dart
 <th> Interface of sale feature
 <th><a href="lib/frontend/sale.dart">click me</a>
 </tr>
 
 <tr>
-<th> 2
+<th> 3
 <th> cart.dart
 <th> Interface of shopping cart feature
 <th><a href="lib/frontend/cart.dart">click me</a>
@@ -90,7 +97,6 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 ### Back-End Coding
 <table>
-
 <tr>
 <th> No
 <th> Source code
