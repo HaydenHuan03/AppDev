@@ -21,31 +21,11 @@ Sprint 1:
 </tr>
 
 <tr>
+<tr>
 <th> 1
-<th> Home.dart
-<th> Home page of application
-<th><a href="lib/page/home.dart">click me</a>
-</tr>
-
-<tr>
-<th> 2
-<th> Interface.dart
-<th> Interface of application
-<th><a href="lib/page/interface.dart">click me</a>
-</tr>
-
-<tr>
-<th> 3
-<th>Login.dart
-<th> Login page of application
-<th><a href="lib/page/login.dart">click me</a>
-</tr>
-
-<tr>
-<th> 4
-<th>Registration.dart
-<th> Registration page of application
-<th><a href="lib/page/registration.dart">click me</a>
+<th> update later
+<th> -
+<th><a href="lib/home.dart">click me</a>
 </tr>
 </table>
 
@@ -64,7 +44,7 @@ Sprint 1:
 <th> 1
 <th> update later
 <th> -
-<th><a href="lib/page/home.dart">click me</a>
+<th><a href="lib/home.dart">click me</a>
 </tr>
 </table>
 
@@ -83,7 +63,7 @@ Sprint 1:
 <th> 1
 <th> update later
 <th> -
-<th><a href="lib/page/home.dart">click me</a>
+<th><a href="lib/home.dart">click me</a>
 </tr>
 </table>
 
@@ -102,7 +82,7 @@ Sprint 1:
 <th> 1
 <th> update later
 <th> -
-<th><a href="lib/page/home.dart">click me</a>
+<th><a href="lib/home.dart">click me</a>
 </tr>
 </table>
 
