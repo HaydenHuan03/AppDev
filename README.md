@@ -109,7 +109,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 2
 <th> product_service.dart
-<th> Firebase Firestore service methods for managing products
+<th> Firebase Firestore service for managing products
 <th><a href="lib/backend/product_service.dart">click me</a>
 </tr>
 </table>
