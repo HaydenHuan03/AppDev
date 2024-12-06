@@ -62,6 +62,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
+<br>
 
 ## Member 2: Eddy Koh Wei Hen
 ### Front-End Coding 
@@ -127,10 +128,24 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> Image 
 <th> The images used for the system
 <th><a href="images/Drinks">Drinks</a><br>
-    <a href="images/Shirt">Shirt</a>
+    <a href="images/Shirt">Shirt</a><br>
+    <a href="images/Shuttlecock">Shuttlecock</a><br>
+    <a href="images/Snacks">Snacks</a><br>
+    <a href="images/racquet">Racquet</a>
+</tr>
+
+<tr>
+<th> 2
+<th> Icon
+<th> The icons used for the system
+<th><a href="icons/NavigationBar">Navigation Bar</a><br>
+    <a href="icons/SaleCategories">Sale Categories</a><br>
+    <a href="icons/Cart_Icon.png">Cart Icon</a><br>
+    <a href="icons/Shop_Icon.png">Shop Icon</a><br>
 </tr>
 </table>
 
+<br>
 
 ## Member 3: Ooi Wei Sian
 ### Front-End Coding 
@@ -185,6 +200,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
+<br>
 
 ## Member 4: Chan Qing Yee
 ### Front-End Coding 
