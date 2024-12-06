@@ -273,22 +273,3 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th><a href="lib/home.dart">click me</a>
 </tr>
 </table>
-
-
-## THEME CONSTANT CODING
-<table>
-
-<tr>
-<th> No
-<th> Source code
-<th> Desription
-<th> Location
-</tr>
-
-<tr>
-<th> 1
-<th>theme.dart
-<th> Theme of the Application
-<th><a href="lib/const/theme.dart">click me</a>
-</tr>
-</table>
