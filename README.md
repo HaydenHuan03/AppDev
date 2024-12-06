@@ -9,7 +9,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
  
 
 ## Member 1: Hayden Huan Kee Jiun
-### FRONT-END CODING 
+### Front-End Coding
 <table>
 <tr>
 <th> No
@@ -27,7 +27,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
-### BACK-END CODING
+### Back-End Coding
 <table>
 
 <tr>
@@ -64,7 +64,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 
 ## Member 2: Eddy Koh Wei Hen
-### FRONT-END CODING 
+### Front-End Coding 
 <table>
 <tr>
 <th> No
@@ -88,7 +88,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
-### BACK-END CODING
+### Back-End Coding
 <table>
 
 <tr>
@@ -132,7 +132,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 
 ## Member 3: Ooi Wei Sian
-### FRONT-END CODING 
+### Front-End Coding 
 <table>
 <tr>
 <th> No
@@ -149,7 +149,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
-### BACK-END CODING
+### Back-End Coding
 <table>
 
 <tr>
@@ -186,7 +186,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 
 ## Member 4: Chan Qing Yee
-### FRONT-END CODING 
+### Front-End Coding 
 <table>
 <tr>
 <th> No
@@ -203,7 +203,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
-### BACK-END CODING
+### Back-End Coding
 <table>
 
 <tr>
