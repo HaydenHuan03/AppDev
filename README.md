@@ -20,6 +20,13 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 1
+<th> main.dart
+<th> Main file of the application (All members contribute together)
+<th><a href="lib/main.dart">click me</a>
+</tr>
+
+<tr>
+<th> 2
 <th> show_available-court.dart
 <th> Booking Page
 <th><a href="lib/pages/show_available_court.dart">click me</a>
