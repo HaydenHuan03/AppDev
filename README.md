@@ -117,16 +117,17 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <table>
 <tr>
 <th> No
-<th> Source code
+<th> About
 <th> Desription
 <th> Location
 </tr>
 
 <tr>
 <th> 1
-<th> update later
-<th> -
-<th><a href="lib/home.dart">click me</a>
+<th> Image 
+<th> The images used for the system
+<th><a href="images/Drinks">Drinks</a>
+    <a href="images/Shirt">Shirt</a>
 </tr>
 </table>
 
