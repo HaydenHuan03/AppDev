@@ -108,7 +108,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 1
 <th>firebase_options.dart
 <th> Library from Firebase (All members contribute together)
-<th><a href="lib/const/firebase_options.dart">click me</a>
+<th><a href="lib/firebase_options.dart">click me</a>
 </tr>
 
 <tr>
@@ -146,8 +146,8 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 2
 <th> Icon
 <th> The icons used for the system
-<th><a href="icons/NavigationBar">Navigation Bar</a><br>
-    <a href="icons/SaleCategories">Sale Categories</a><br>
+<th><a href="icons/NavigationBar">Navigation Bar Folder</a><br>
+    <a href="icons/SaleCategories">Sale Categories Folder</a><br>
     <a href="icons/Cart_Icon.png">Cart Icon</a><br>
     <a href="icons/Shop_Icon.png">Shop Icon</a><br>
 </tr>
@@ -156,11 +156,11 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 3
 <th> Image 
 <th> The images used for the system
-<th><a href="images/Drinks">Drinks</a><br>
-    <a href="images/Shirt">Shirt</a><br>
-    <a href="images/Shuttlecock">Shuttlecock</a><br>
-    <a href="images/Snacks">Snacks</a><br>
-    <a href="images/racquet">Racquet</a>
+<th><a href="images/Drinks">Drinks Folder</a><br>
+    <a href="images/Shirt">Shirt Folder</a><br>
+    <a href="images/Shuttlecock">Shuttlecock Folder</a><br>
+    <a href="images/Snacks">Snacks Folder</a><br>
+    <a href="images/racquet">Racquet Folder</a>
 </tr>
 </table>
 
