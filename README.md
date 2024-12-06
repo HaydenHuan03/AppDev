@@ -46,7 +46,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 2
 <th>court_service.dart
-<th> Library from Firebase (All members contribute together)
+<th> Handle the court information
 <th><a href="lib/data/court_service.dart">click me</a>
 </tr>
 </table>
