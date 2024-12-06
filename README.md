@@ -137,13 +137,9 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 1
-<th> Image 
-<th> The images used for the system
-<th><a href="images/Drinks">Drinks</a><br>
-    <a href="images/Shirt">Shirt</a><br>
-    <a href="images/Shuttlecock">Shuttlecock</a><br>
-    <a href="images/Snacks">Snacks</a><br>
-    <a href="images/racquet">Racquet</a>
+<th> pubspec.yaml
+<th> The environment of the application (All members contribute together)
+<th><a href="pubspec.yaml">pubspec.yaml</a>
 </tr>
 
 <tr>
@@ -154,6 +150,17 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
     <a href="icons/SaleCategories">Sale Categories</a><br>
     <a href="icons/Cart_Icon.png">Cart Icon</a><br>
     <a href="icons/Shop_Icon.png">Shop Icon</a><br>
+</tr>
+
+<tr>
+<th> 3
+<th> Image 
+<th> The images used for the system
+<th><a href="images/Drinks">Drinks</a><br>
+    <a href="images/Shirt">Shirt</a><br>
+    <a href="images/Shuttlecock">Shuttlecock</a><br>
+    <a href="images/Snacks">Snacks</a><br>
+    <a href="images/racquet">Racquet</a>
 </tr>
 </table>
 
