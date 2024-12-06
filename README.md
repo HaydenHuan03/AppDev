@@ -20,9 +20,9 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 1
-<th> update later
+<th> show_available-court.dart
 <th> -
-<th><a href="lib/home.dart">click me</a>
+<th><a href="lib/pages/show_available_court.dart">click me</a>
 </tr>
 </table>
 
