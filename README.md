@@ -40,8 +40,8 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 1
 <th>firebase_options.dart
-<th> Library from Firebase
-<th><a href="lib/const/firebase_options.dart">click me</a>
+<th> Library from Firebase (All members contribute together)
+<th><a href="lib/firebase_options.dart">click me</a>
 </tr>
 </table>
 
@@ -101,13 +101,20 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 1
+<th>firebase_options.dart
+<th> Library from Firebase (All members contribute together)
+<th><a href="lib/const/firebase_options.dart">click me</a>
+</tr>
+
+<tr>
+<th> 2
 <th> product.dart
 <th> Information about products
 <th><a href="lib/backend/product.dart">click me</a>
 </tr>
 
 <tr>
-<th> 2
+<th> 3
 <th> product_service.dart
 <th> Firebase Firestore service for managing products
 <th><a href="lib/backend/product_service.dart">click me</a>
@@ -178,8 +185,8 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 1
 <th>firebase_options.dart
-<th> Library from Firebase
-<th><a href="lib/const/firebase_options.dart">click me</a>
+<th> Library from Firebase (All members contribute together)
+<th><a href="lib/firebase_options.dart">click me</a>
 </tr>
 </table>
 
@@ -233,8 +240,8 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 1
 <th>firebase_options.dart
-<th> Library from Firebase
-<th><a href="lib/const/firebase_options.dart">click me</a>
+<th> Library from Firebase (All members contribute together)
+<th><a href="lib/firebase_options.dart">click me</a>
 </tr>
 </table>
 
