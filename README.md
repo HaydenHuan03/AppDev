@@ -21,7 +21,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 1
 <th> show_available-court.dart
-<th> -
+<th> Booking Page
 <th><a href="lib/pages/show_available_court.dart">click me</a>
 </tr>
 </table>
@@ -44,6 +44,14 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
+<tr>
+<th> 2
+<th>court_service.dart
+<th> Library from Firebase (All members contribute together)
+<th><a href="lib/data/court_service.dart">click me</a>
+</tr>
+</table>
+
 ### Others
 <table>
 <tr>
@@ -55,11 +63,10 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 1
-<th> update later
-<th> -
-<th><a href="lib/home.dart">click me</a>
+<th> pubspec.yaml
+<th> The environment of the application (All members contribute together)
+<th><a href="pubspec.yaml">pubspec.yaml</a>
 </tr>
-</table>
 
 <br>
 
