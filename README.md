@@ -279,9 +279,9 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 1
-<th> update later
-<th> -
-<th><a href="lib/home.dart">click me</a>
+<th> pubspec.yaml
+<th> The environment of the application (All members contribute together)
+<th><a href="pubspec.yaml">pubspec.yaml</a>
 </tr>
 </table>
 
