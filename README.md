@@ -266,6 +266,13 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th><a href="lib/backend/voucher_history_service.dart">click me</a>
 </tr>
 
+<tr>
+<th> 5
+<th> promotion.dart
+<th> Information about promotion
+<th><a href="lib/backend/product.dart">click me</a>
+</tr>
+
 </table>
 
 ### Others
