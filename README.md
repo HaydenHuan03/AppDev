@@ -194,9 +194,37 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 1
-<th> update later
-<th> -
-<th><a href="lib/home.dart">click me</a>
+<th> main.dart
+<th> Main file of the application (All members contribute together)
+<th><a href="lib/main.dart">click me</a>
+</tr>
+
+<tr>
+<th> 2
+<th> equipment_list_screen.dart
+<th> List Of Discounted Equipment
+<th><a href="lib/frontend/equipment_list_screen.dart">click me</a>
+</tr>
+
+<tr>
+<th> 3
+<th> promotion_detail_screen.dart
+<th> Detail Information Of Promotion
+<th><a href="lib/frontend/promotion_detail_screen.dart">click me</a>
+</tr>
+
+<tr>
+<th> 4
+<th> promotion_list_screen.dart
+<th> List Of Promotion
+<th><a href="lib/frontend/promotion_list_screen.dart">click me</a>
+</tr>
+
+<tr>
+<th> 5
+<th> promotion_main_page.dart
+<th> Main Page Of Promotion
+<th><a href="lib/frontend/promotion_main_page.dart">click me</a>
 </tr>
 </table>
 
@@ -216,6 +244,28 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> Library from Firebase (All members contribute together)
 <th><a href="lib/firebase_options.dart">click me</a>
 </tr>
+
+<tr>
+<th> 2
+<th> equipment_service.dart
+<th> Firebase Firestone Service For Managing Equipment
+<th><a href="lib/backend/equipment_service.dart">click me</a>
+</tr>
+
+<tr>
+<th> 3
+<th> user_voucher_service.dart
+<th> Firebase Firestone Service For Managing Voucher
+<th><a href="lib/backend/user_voucher_service.dart">click me</a>
+</tr>
+
+<tr>
+<th> 4
+<th> voucher_history_service.dart
+<th> Firebase Firestone Service For Managing User Voucher
+<th><a href="lib/backend/voucher_history_service.dart">click me</a>
+</tr>
+
 </table>
 
 ### Others
