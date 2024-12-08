@@ -297,3 +297,47 @@ class _MainScreenState extends State<MainScreen> {
   }
 }
 */
+
+
+//Qing Yee's version
+/*
+import 'package:flutter/material.dart';
+import 'register_screen.dart';
+import 'login_screen.dart';
+import 'profile_screen.dart';
+import 'home_screen.dart';
+import 'password_reset_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false, // Add this line
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Color(0xFFFB2626),
+        scaffoldBackgroundColor: Color(0xFF000000),
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginScreen(),
+        '/register': (context) => RegisterScreen(),
+        '/home': (context) => HomeScreen(),
+        '/profile': (context) => ProfileScreen(),
+        '/passwordReset': (context) => PasswordResetScreen(resetCode: '',),
+      },
+    );
+  }
+}
+
+*/
