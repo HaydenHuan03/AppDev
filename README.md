@@ -1,6 +1,6 @@
 # UTM Courtify - Sprint 1
 
-A new Flutter project from Group Superlollipop to help UTMians to have a better user experience on booking courts at UTM Sports Hall. With the help of this application, UTM students are able to create an account with their UTM email to use this application. This ensures that only UTM students can enjoy this service but not others. This application includes the fuinctions below:
+A new Flutter project from Group Superlollipop to help UTMians to have a better user experience on booking courts at UTM Sports Hall. With the help of this application, UTM students are able to create an account with their UTM email to use this application. This ensures that only UTM students can enjoy this service but not others. This application includes the functions below:
 
 1. Real-time booking system
 2. Shopping and Rental Sports Equipment
@@ -14,7 +14,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> No
 <th> Source code
-<th> Desription
+<th> Description
 <th> Location
 </tr>
 
@@ -65,7 +65,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> No
 <th> Source code
-<th> Desription
+<th> Description
 <th> Location
 </tr>
 
@@ -85,7 +85,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> No
 <th> Source code
-<th> Desription
+<th> Description
 <th> Location
 </tr>
 
@@ -116,7 +116,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> No
 <th> Source code
-<th> Desription
+<th> Description
 <th> Location
 </tr>
 
@@ -147,7 +147,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> No
 <th> About
-<th> Desription
+<th> Description
 <th> Location
 </tr>
 
@@ -188,7 +188,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> No
 <th> Source code
-<th> Desription
+<th> Description
 <th> Location
 </tr>
 
@@ -280,7 +280,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> No
 <th> Source code
-<th> Desription
+<th> Description
 <th> Location
 </tr>
 
@@ -300,7 +300,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> No
 <th> Source code
-<th> Desription
+<th> Description
 <th> Location
 </tr>
 
@@ -335,7 +335,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> No
 <th> Source code
-<th> Desription
+<th> Description
 <th> Location
 </tr>
 
