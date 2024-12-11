@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'cart.dart';
 import '../backend/product.dart';
 import 'package:ad_project_v2/backend/product_service.dart';
+import 'order.dart'; //Sprint 2
 
 class SalePage extends StatefulWidget {
   const SalePage({super.key});
@@ -26,6 +27,15 @@ class _SalePageState extends State<SalePage> {
   void _removeFromCart(Product product) {
     setState(() {
       _cartItems.remove(product);
+    });
+  }
+
+    // Calculate total cart price - Sprint 2
+  double _calculateTotalPrice() {
+    return _cartItems.fold(0.0, (total, product) {
+      // Remove 'RM' and convert to double
+      String priceString = product.price.replaceAll('RM ', '');
+      return total + double.parse(priceString);
     });
   }
 
@@ -264,20 +274,37 @@ class _SalePageState extends State<SalePage> {
                 onRemoveFromCart: _removeFromCart,
               ),
             ),
-            // Buy Now bar - Only show when the cart list is no empty
+            // Order Now bar - Only show when the cart list is no empty -Sprint 2
+            //Click to proceed payment features
             if (_cartItems.isNotEmpty)
-              Container(
-                color: Color(0xFFFB2626),
-                width: 150, // width of buy now bar
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                margin: const EdgeInsets.only(top: 20, bottom: 20),
-                child: const Center(
-                  child: Text(
-                    'Buy Now',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => PaymentDialog(
+                      cartItems: _cartItems,
+                      totalPrice: _calculateTotalPrice(),
+                      onClearCart: () {
+                        setState(() {
+                          _cartItems.clear();
+                        });
+                      },
+                    ),
+                  );
+                },
+                child: Container(
+                  color: Color(0xFFFB2626),
+                  width: 300, // width of buy now bar
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.only(top: 20, bottom: 20),
+                  child: Center(
+                    child: Text(
+                      'Order Now: RM ${_calculateTotalPrice().toStringAsFixed(2)}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
