@@ -247,7 +247,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 2
 <th> order_service.dart
-<th> Firebase Firestore service for managing ordera
+<th> Firebase Firestore service for managing orders
 <th><a href="lib/backend/order_service.dart">click me</a>
 </tr>
 </table>
