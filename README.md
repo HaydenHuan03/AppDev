@@ -516,30 +516,16 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th>2
-<th>register_screen.dart
-<th>Register Page
-<th><a href="lib/frontend/register_screen.dart">click me</a>
+<th>customer_support_screen.dart
+<th>Customer Support Page
+<th><a href="lib/frontend/customer_support_screen.dart">click me</a>
 </tr>
 
 <tr>
 <th> 3
-<th> login_screen.dart
+<th> emergency_contacts_screen.dart
 <th> Login Page
-<th><a href="lib/frontend/login_screen.dart">click me</a>
-</tr>
-
-<tr>
-<th> 4
-<th> profile_screen.dart
-<th> Profile Page
-<th><a href="lib/frontend/profile_screen.dart">click me</a>
-</tr>
-
-<tr>
-<th> 5
-<th> password_reset_screen.dart
-<th> Password Reset Page
-<th><a href="lib/frontend/password_reset_screen.dart">click me</a>
+<th><a href="lib/frontend/emergency_contacts_screen.dart">click me</a>
 </tr>
 
 </table>
@@ -563,23 +549,16 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 2
-<th> firebase_auth_service.dart
-<th> Register user and save user information
-<th><a href="lib/backend/firebase_auth_service.dart">click me</a>
+<th> firebase_customersupport_service.dart
+<th> Centralizing customer support information
+<th><a href="lib/backend/firebase_customersupport_service.dart">click me</a>
 </tr>
 
 <tr>
 <th> 3
-<th> firebase_login_service.dart
-<th> Authenticate user by validating input
-<th><a href="lib/backend/firebase_login_service.dart">click me</a>
-</tr>
-
-<tr>
-<th> 4
-<th> firebase_profile_service.dart
-<th> Manage user information
-<th><a href="lib/backend/firebase_profile_service.dart">click me</a>
+<th> firebase_emergencycontact_service.dart
+<th> Store UTM health centre information
+<th><a href="lib/backend/firebase_emergencycontact_service.dart">click me</a>
 </tr>
 
 </table>
