@@ -1,4 +1,4 @@
-# UTM Courtify - Sprint 1
+# UTM Courtify
 
 A new Flutter project from Group Superlollipop to help UTMians to have a better user experience on booking courts at UTM Sports Hall. With the help of this application, UTM students are able to create an account with their UTM email to use this application. This ensures that only UTM students can enjoy this service but not others. This application includes the functions below:
 
@@ -9,6 +9,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
  
 
 ## Member 1: Hayden Huan Kee Jiun
+## Sprint 1
 ### Front-End Coding
 <table>
 <tr>
@@ -79,7 +80,13 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </table>
 <br>
 
+## Sprint 2
+
+
+<br>
+
 ## Member 2: Eddy Koh Wei Hen
+## Sprint 1
 ### Front-End Coding 
 <table>
 <tr>
@@ -182,7 +189,12 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <br>
 
+## Sprint 2
+
+<br>
+
 ## Member 3: Ooi Wei Sian
+## Sprint 1
 ### Front-End Coding 
 <table>
 <tr>
@@ -294,7 +306,12 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <br>
 
+## Sprint 2
+
+<br>
+
 ## Member 4: Chan Qing Yee
+## Sprint 1
 ### Front-End Coding 
 <table>
  
@@ -398,3 +415,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th><a href="pubspec.yaml">pubspec.yaml</a>
 </tr>
 </table>
+
+<br>
+
+## Sprint 2
