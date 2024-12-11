@@ -457,20 +457,13 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 2
-<th> equipment_service.dart
-<th> Firebase Firestone Service For Managing Equipment
-<th><a href="lib/backend/equipment_service.dart">click me</a>
-</tr>
-
-<tr>
-<th> 3
 <th> user_voucher_service.dart
 <th> Firebase Firestone Service For Managing Voucher
 <th><a href="lib/backend/user_voucher_service.dart">click me</a>
 </tr>
 
 <tr>
-<th> 4
+<th> 3
 <th> voucher_history_service.dart
 <th> Firebase Firestone Service For Managing User Voucher
 <th><a href="lib/backend/voucher_history_service.dart">click me</a>
