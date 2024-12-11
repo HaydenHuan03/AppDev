@@ -496,3 +496,109 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <br>
 
 ## Sprint 2
+
+### Front-End Coding 
+<table>
+ 
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> main.dart
+<th> Main file of the application (All members contribute together)
+<th><a href="lib/main.dart">click me</a>
+</tr>
+
+<tr>
+<th>2
+<th>register_screen.dart
+<th>Register Page
+<th><a href="lib/frontend/register_screen.dart">click me</a>
+</tr>
+
+<tr>
+<th> 3
+<th> login_screen.dart
+<th> Login Page
+<th><a href="lib/frontend/login_screen.dart">click me</a>
+</tr>
+
+<tr>
+<th> 4
+<th> profile_screen.dart
+<th> Profile Page
+<th><a href="lib/frontend/profile_screen.dart">click me</a>
+</tr>
+
+<tr>
+<th> 5
+<th> password_reset_screen.dart
+<th> Password Reset Page
+<th><a href="lib/frontend/password_reset_screen.dart">click me</a>
+</tr>
+
+</table>
+
+### Back-End Coding
+<table>
+
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th>firebase_options.dart
+<th> Library from Firebase (All members contribute together)
+<th><a href="lib/firebase_options.dart">click me</a>
+</tr>
+
+<tr>
+<th> 2
+<th> firebase_auth_service.dart
+<th> Register user and save user information
+<th><a href="lib/backend/firebase_auth_service.dart">click me</a>
+</tr>
+
+<tr>
+<th> 3
+<th> firebase_login_service.dart
+<th> Authenticate user by validating input
+<th><a href="lib/backend/firebase_login_service.dart">click me</a>
+</tr>
+
+<tr>
+<th> 4
+<th> firebase_profile_service.dart
+<th> Manage user information
+<th><a href="lib/backend/firebase_profile_service.dart">click me</a>
+</tr>
+
+</table>
+
+### Others
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> pubspec.yaml
+<th> The environment of the application (All members contribute together)
+<th><a href="pubspec.yaml">pubspec.yaml</a>
+</tr>
+</table>
+
+<br>
