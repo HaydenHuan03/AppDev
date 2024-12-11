@@ -380,27 +380,6 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 2
-<th> equipment_service.dart
-<th> Firebase Firestone Service For Managing Equipment
-<th><a href="lib/backend/equipment_service.dart">click me</a>
-</tr>
-
-<tr>
-<th> 3
-<th> user_voucher_service.dart
-<th> Firebase Firestone Service For Managing Voucher
-<th><a href="lib/backend/user_voucher_service.dart">click me</a>
-</tr>
-
-<tr>
-<th> 4
-<th> voucher_history_service.dart
-<th> Firebase Firestone Service For Managing User Voucher
-<th><a href="lib/backend/voucher_history_service.dart">click me</a>
-</tr>
-
-<tr>
-<th> 5
 <th> promotion.dart
 <th> Information about promotion
 <th><a href="lib/backend/product.dart">click me</a>
@@ -428,6 +407,95 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <br>
 
 ## Sprint 2
+### Front-End Coding 
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> main.dart
+<th> Main file of the application (All members contribute together)
+<th><a href="lib/main.dart">click me</a>
+</tr>
+
+<tr>
+<th> 2
+<th> discover_voucher_screen.dart
+<th> List Of Voucher To Be Redeemed
+<th><a href="lib/frontend/discover_voucher_screen.dart">click me</a>
+</tr>
+
+<tr>
+<th> 3
+<th> my_voucher_screen.dart
+<th> User's Voucher
+<th><a href="lib/frontend/my_voucher_screen.dart">click me</a>
+</tr>
+</table>
+
+### Back-End Coding
+<table>
+
+<tr>
+<th> No
+<th> Source code
+<th> Desription
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th>firebase_options.dart
+<th> Library from Firebase (All members contribute together)
+<th><a href="lib/firebase_options.dart">click me</a>
+</tr>
+
+<tr>
+<th> 2
+<th> equipment_service.dart
+<th> Firebase Firestone Service For Managing Equipment
+<th><a href="lib/backend/equipment_service.dart">click me</a>
+</tr>
+
+<tr>
+<th> 3
+<th> user_voucher_service.dart
+<th> Firebase Firestone Service For Managing Voucher
+<th><a href="lib/backend/user_voucher_service.dart">click me</a>
+</tr>
+
+<tr>
+<th> 4
+<th> voucher_history_service.dart
+<th> Firebase Firestone Service For Managing User Voucher
+<th><a href="lib/backend/voucher_history_service.dart">click me</a>
+</tr>
+
+</table>
+
+### Others
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> pubspec.yaml
+<th> The environment of the application (All members contribute together)
+<th><a href="pubspec.yaml">pubspec.yaml</a>
+</tr>
+</table>
+
+<br>
 
 <br>
 
