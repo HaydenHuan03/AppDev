@@ -94,7 +94,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 1
 <th> booking_screen.dart
 <th> Booking Page
-<th><a href="lib/pages/booking_scrren.dart">click me</a>
+<th><a href="lib/pages/booking_screen.dart">click me</a>
 </tr>
 
 <tr>
