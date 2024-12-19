@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'services/equipment_service.dart';
+import 'order.dart'; // Import the PromotionOrderDialog
 
 class EquipmentListScreen extends StatelessWidget {
   final String category;
@@ -7,10 +8,8 @@ class EquipmentListScreen extends StatelessWidget {
 
   EquipmentListScreen({required this.category, required this.discount});
 
-  // Instantiate FirebaseService
   final EquipmentService firebaseService = EquipmentService();
 
-  // Map to store image paths for each equipment
   final Map<String, String> imageMap = {
     'Yonex Arcsaber 11 Pro': 'assets/arc11pro.png',
     'Victor Thruster Ryuga II': 'assets/ryuga2.png',
@@ -22,7 +21,6 @@ class EquipmentListScreen extends StatelessWidget {
     'Li-Ning No.1 String': 'assets/lining_string.png',
     'Victor VBS-63 String': 'assets/victor_string.png',
     'Yonex BG65 String': 'assets/bg65_string.png',
-
   };
 
   @override
@@ -119,12 +117,19 @@ class EquipmentListScreen extends StatelessWidget {
                           SizedBox(height: 12.0),
                           ElevatedButton(
                             onPressed: () {
-                              // Add your "Buy Now" functionality here.
+                              // Navigate to the order dialog on "Buy Now" press
+                              showDialog(
+                                context: context,
+                                builder: (context) => PromotionOrderDialog(
+                                  name: name, // Pass only name
+                                  price: discountedPrice, // Pass price
+                                ),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFFFB2626),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)
+                                borderRadius: BorderRadius.circular(20),
                               ),
                               foregroundColor: Colors.white,
                             ),
