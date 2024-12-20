@@ -213,8 +213,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> The icons used for the system
 <th><a href="icons/NavigationBar">Navigation Bar Folder</a><br>
     <a href="icons/SaleCategories">Sale Categories Folder</a><br>
-    <a href="icons/Cart_Icon.png">Cart Icon</a><br>
-    <a href="icons/Shop_Icon.png">Shop Icon</a><br>
+    <a href="icons/ShoppingPlatformIcon">Shopping Platform Folder</a><br>
 </tr>
 
 <tr>
