@@ -231,6 +231,88 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <br>
 
+## Sprint 3
+### Front-End Coding 
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> main.dart
+<th> Main file of the application (All members contribute together)
+<th><a href="lib/main.dart">click me</a>
+</tr>
+
+<tr>
+<th> 2
+<th> sale.dart
+<th> Interface of sale feature - Edit a bit from Sprint 1
+<th><a href="lib/frontend/sale.dart">click me</a>
+</tr>
+
+<tr>
+<th> 3
+<th> order.dart
+<th> Interface of order feature
+<th><a href="lib/frontend/order.dart">click me</a>
+</tr>
+
+<tr>
+<th> 4
+<th> receipt.dart
+<th> Interface of receipt feature
+<th><a href="lib/frontend/receipt.dart">click me</a>
+</tr>
+</table>
+
+### Back-End Coding
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th>firebase_options.dart
+<th> Library from Firebase (All members contribute together)
+<th><a href="lib/firebase_options.dart">click me</a>
+</tr>
+
+<tr>
+<th> 2
+<th> order_service.dart
+<th> Firebase Firestore service for managing orders
+<th><a href="lib/backend/order_service.dart">click me</a>
+</tr>
+</table>
+
+### Others
+<table>
+<tr>
+<th> No
+<th> About
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> pubspec.yaml
+<th> The environment of the application (All members contribute together)
+<th><a href="pubspec.yaml">pubspec.yaml</a>
+</tr>
+</table>
+
+<br>
+
 ## Sprint 2
 ### Front-End Coding 
 <table>
@@ -312,6 +394,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </table>
 
 <br>
+
 
 
 ## Member 3: Ooi Wei Sian
