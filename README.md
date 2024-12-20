@@ -149,7 +149,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 2
 <th> sale.dart
 <th> Interface of sale feature
-<th><a href="lib/frontend/sale.dart">click me</a>
+<th><a href="lib/frontend/shopping.dart">click me</a>
 </tr>
 
 <tr>
@@ -180,14 +180,14 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 2
 <th> product.dart
 <th> Information about products
-<th><a href="lib/backend/product.dart">click me</a>
+<th><a href="lib/backend/product_data.dart">click me</a>
 </tr>
 
 <tr>
 <th> 3
 <th> product_service.dart
 <th> Firebase Firestore service for managing products
-<th><a href="lib/backend/product_service.dart">click me</a>
+<th><a href="lib/backend/product_data_service.dart">click me</a>
 </tr>
 </table>
 
@@ -251,7 +251,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 2
 <th> sale.dart
 <th> Interface of sale feature - Edit a bit from Sprint 1
-<th><a href="lib/frontend/sale.dart">click me</a>
+<th><a href="lib/frontend/shopping.dart">click me</a>
 </tr>
 
 <tr>
@@ -265,7 +265,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 4
 <th> receipt.dart
 <th> Interface of receipt feature
-<th><a href="lib/frontend/receipt.dart">click me</a>
+<th><a href="lib/frontend/order_receipt.dart">click me</a>
 </tr>
 </table>
 
