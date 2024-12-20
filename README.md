@@ -230,7 +230,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <br>
 
-## Sprint 3
+## Sprint 2
 ### Front-End Coding 
 <table>
 <tr>
@@ -312,7 +312,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <br>
 
-## Sprint 2
+## Sprint 3
 ### Front-End Coding 
 <table>
 <tr>
