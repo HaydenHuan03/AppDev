@@ -460,14 +460,14 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 6
 <th> order.dart
 <th> Order Page
-<th><a href="lib/frontend/order.dart">click me</a>
+<th><a href="lib/frontend/promotion_order.dart">click me</a>
 </tr>
 
 <tr>
 <th> 7
 <th> order_receipt.dart
 <th> Order Receipt 
-<th><a href="lib/frontend/order_receipt.dart">click me</a>
+<th><a href="lib/frontend/promotion_order_receipt.dart">click me</a>
 </tr>
 </table>
 
@@ -499,7 +499,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 3
 <th> order_service.dart
 <th> Backend For Order
-<th><a href="lib/backend/order_service.dart">click me</a>
+<th><a href="lib/backend/promotion_order_service.dart">click me</a>
 </tr>
 
 </table>
