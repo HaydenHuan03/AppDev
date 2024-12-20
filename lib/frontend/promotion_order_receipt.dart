@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-//import 'package:ad_project_v2/backend/rent_item_data.dart'; //maybe no need this
-import 'services/order_service.dart';
+import 'services/promotion_order_service.dart';
 
 class PromotionOrderReceipt extends StatelessWidget {
   final String name;
   final String idNumber;
   final String email;
-  final String promotionProcuct; //According your file // the item
+  final String promotionProcuct; 
   final double price;
   final PromotionOrderService _orderService = PromotionOrderService();
 
@@ -16,7 +15,7 @@ class PromotionOrderReceipt extends StatelessWidget {
     required this.name,
     required this.idNumber,
     required this.email,
-    required this.promotionProcuct, //According your file
+    required this.promotionProcuct, 
     required this.price,
   }) : super(key: key);
 
@@ -37,7 +36,7 @@ class PromotionOrderReceipt extends StatelessWidget {
       idNumber: idNumber,
       email: email,
       price: price,
-      promotionProcuct: promotionProcuct, //According your file
+      promotionProcuct: promotionProcuct, 
       orderCompleted: false,
     );
 
