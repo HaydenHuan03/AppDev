@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'order_receipt.dart';
+import 'promotion_order_receipt.dart';
 import 'dart:math';
 
 import 'services/order_service.dart';  // Import the order service
