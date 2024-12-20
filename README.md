@@ -148,15 +148,22 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 2
 <th> sale.dart
-<th> Interface of sale feature
+<th> Interface of sale display
 <th><a href="lib/frontend/shopping.dart">click me</a>
 </tr>
 
 <tr>
 <th> 3
 <th> cart.dart
-<th> Interface of shopping cart feature
+<th> Interface of shopping cart display
 <th><a href="lib/frontend/cart.dart">click me</a>
+</tr>
+
+<tr>
+<th> 4
+<th> product.dart
+<th> Interface of sale products display
+<th><a href="lib/frontend/product.dart">click me</a>
 </tr>
 </table>
 
@@ -250,21 +257,21 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 2
 <th> sale.dart
-<th> Interface of sale feature - Edit a bit from Sprint 1
+<th> File in sprint before<br> Edit the content a little bit
 <th><a href="lib/frontend/shopping.dart">click me</a>
 </tr>
 
 <tr>
 <th> 3
 <th> order.dart
-<th> Interface of order feature
+<th> Interface of order display
 <th><a href="lib/frontend/order.dart">click me</a>
 </tr>
 
 <tr>
 <th> 4
 <th> receipt.dart
-<th> Interface of receipt feature
+<th> Interface of receipt display
 <th><a href="lib/frontend/order_receipt.dart">click me</a>
 </tr>
 </table>
@@ -333,13 +340,70 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 2
 <th> shopping.dart<br>
      order_receipt.dart<br>
-<th> Change name from sale.dart to shopping.dart<br>
+<th> File in sprint before<br>
+     Change name from sale.dart to shopping.dart<br>
      Change name from receipt.dart to order_receipt.dart<br>
 <th> <a href="lib/frontend/shopping.dart">shopping.dart</a><br>
      <a href="lib/frontend/order_receipt.dart">order_receipt.dart</a><br>
 </tr>
 
+<tr>
+<th> 3
+<th> cart.dart<br>
+     product.dart<br>
+     order.dart<br>
+     order_receipt.dart<br>
+     shopping.dart<br>  
+<th> File in sprint before<br>
+     Import some new path or edit the content a little bit or both
+<th><a href="lib/frontend/cart.dart">cart.dart</a><br>
+    <a href="lib/frontend/product.dart">product.dart</a><br>
+    <a href="lib/frontend/order.dart">order.dart</a><br>
+    <a href="lib/frontend/order_receipt.dart">order_receipt.dart</a><br>
+    <a href="lib/frontend/shopping.dart">shopping.dart</a><br>
+</tr>
 
+<tr>
+<th> 4
+<th> order_history.dart
+<th> Interface of order history display
+<th><a href="lib/frontend/order_history.dart">click me</a>
+</tr>
+
+<tr>
+<th> 6
+<th> rental_detail.dart
+<th> Interface of rental detail display - Similar to order history but with some small changes
+<th><a href="lib/frontend/rental_detail.dart">click me</a>
+</tr>
+
+<tr>
+<th> 7
+<th> rental.dart
+<th> Interface of rental display - Similar to order in Sprint 2 but with some small changes
+<th><a href="lib/frontend/rental.dart">click me</a>
+</tr>
+
+<tr>
+<th> 8
+<th> rental_receipt.dart
+<th> Interface of rental receipt display - Similar to order receipt in Sprint 2 but with some small changes
+<th><a href="lib/frontend/rental_receipt.dart">click me</a>
+</tr>
+
+<tr>
+<th> 9
+<th> rent_item.dart
+<th> Interface of rental item display - Similar to product display in Sprint 1 but with some small changes
+<th><a href="lib/frontend/rent_item.dart">click me</a>
+</tr>
+
+<tr>
+<th> 10
+<th> rental_policy.dart
+<th> Interface of rental policy display 
+<th><a href="lib/frontend/rental_policy.dart">click me</a>
+</tr>
 </table>
 
 ### Back-End Coding
@@ -362,10 +426,53 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 2
 <th> product_data.dart<br>
      product_data_service.dart<br>
-<th> Change name from product.dart to product_data.dart<br>
-     Change name from product_service.dart to product_data_servic.dart<br>
+<th> File in sprint before<br>
+     Change name from product.dart to product_data.dart<br>
+     Change name from product_service.dart to product_data_service.dart<br>
 <th> <a href="lib/backend/product_data.dart">product_data.dart</a><br>
      <a href="lib/backend/product_data_service.dart">product_data_service.dart</a><br>
+</tr>
+
+<tr>
+<th> 3
+<th> order_service.dart<br>
+<th> File in sprint before<br>Edit the content a little bit
+<th><a href="lib/backend/order_service.dart">order_service.dart</a><br>
+</tr>
+
+<tr>
+<th> 4
+<th> rental_service.dart
+<th> Firebase Firestore service for managing rental service - Similar to order service in Sprint 2 but with some small changes
+<th><a href="lib/backend/rental_service.dart">click me</a>
+</tr>
+
+<tr>
+<th> 5
+<th> order_history_service.dart
+<th> Firebase Firestore service for managing order history
+<th><a href="lib/backend/order_history_service.dart">click me</a>
+</tr>
+
+<tr>
+<th> 6
+<th> rental_detail_service.dart
+<th> Firebase Firestore service for managing rental detail - Similar to order history service but with some small changes
+<th><a href="lib/backend/rental_detail_service.dart">click me</a>
+</tr>
+
+<tr>
+<th> 7
+<th> rent_item_data.dart
+<th> Information of rental items - Similar to product data in Sprint 1 but with some small changes
+<th><a href="lib/backend/rent_item_data.dart">click me</a>
+</tr>
+
+<tr>
+<th> 8
+<th> rent_item_data_service.dart
+<th> Firebase Firestore service for managing rental items - Similar to product data service in Sprint 1 but with some small changes
+<th><a href="lib/backend/rent_item_data_service.dart">click me</a>
 </tr>
 </table>
 
