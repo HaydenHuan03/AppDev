@@ -331,18 +331,12 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 2
-<th> 1. shopping.dart<br>
-     2. order_receipt.dart<br>
-     3. product_data.dart<br>
-     4. product_data_service.dart<br>
-<th> 1. Change name from sale.dart to shopping.dart<br>
-     2. Change name from receipt.dart to order_receipt.dart<br>
-     3. Change name from product.dart to product_data.dart<br>
-     4. Change name from product_service.dart to product_data_servic.dart<br>
-<th> 1. <a href="lib/frontend/shopping.dart">shopping.dart</a><br>
-     2. <a href="lib/frontend/order_receipt.dart">order_receipt.dart</a><br>
-     3. <a href="lib/backend/product_data.dart">product_data.dart</a><br>
-     4. <a href="lib/backendend/product_data_service.dart">product_data_service.dart</a><br>
+<th> shopping.dart<br>
+     order_receipt.dart<br>
+<th> Change name from sale.dart to shopping.dart<br>
+     Change name from receipt.dart to order_receipt.dart<br>
+<th> <a href="lib/frontend/shopping.dart">shopping.dart</a><br>
+     <a href="lib/frontend/order_receipt.dart">order_receipt.dart</a><br>
 </tr>
 
 
@@ -366,9 +360,12 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 2
-<th> order_service.dart
-<th> Firebase Firestore service for managing orders
-<th><a href="lib/backend/order_service.dart">click me</a>
+<th> product_data.dart<br>
+     product_data_service.dart<br>
+<th> Change name from product.dart to product_data.dart<br>
+     Change name from product_service.dart to product_data_servic.dart<br>
+<th> <a href="lib/backend/product_data.dart">product_data.dart</a><br>
+     <a href="lib/backend/product_data_service.dart">product_data_service.dart</a><br>
 </tr>
 </table>
 
@@ -404,7 +401,6 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </table>
 
 <br>
-
 
 
 ## Member 3: Ooi Wei Sian
