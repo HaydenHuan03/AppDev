@@ -331,24 +331,21 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 <tr>
 <th> 2
-<th> sale.dart
-<th> Interface of sale feature - Edit a bit from Sprint 1
-<th><a href="lib/frontend/sale.dart">click me</a>
+<th> 1. shopping.dart<br>
+     2. order_receipt.dart<br>
+     3. product_data.dart<br>
+     4. product_data_service.dart<br>
+<th> 1. Change name from sale.dart to shopping.dart<br>
+     2. Change name from receipt.dart to order_receipt.dart<br>
+     3. Change name from product.dart to product_data.dart<br>
+     4. Change name from product_service.dart to product_data_servic.dart<br>
+<th> 1. <a href="lib/frontend/shopping.dart">shopping.dart</a><br>
+     2. <a href="lib/frontend/order_receipt.dart">order_receipt.dart</a><br>
+     3. <a href="lib/backend/product_data.dart">product_data.dart</a><br>
+     4. <a href="lib/backendend/product_data_service.dart">product_data_service.dart</a><br>
 </tr>
 
-<tr>
-<th> 3
-<th> order.dart
-<th> Interface of order feature
-<th><a href="lib/frontend/order.dart">click me</a>
-</tr>
 
-<tr>
-<th> 4
-<th> receipt.dart
-<th> Interface of receipt feature
-<th><a href="lib/frontend/receipt.dart">click me</a>
-</tr>
 </table>
 
 ### Back-End Coding
