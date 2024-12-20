@@ -67,11 +67,13 @@ flutter:
   - icons/
   - icons/NavigationBar/
   - icons/SaleCategories/
+  - icons/ShoppingPlatformIcon/
   - images/racquet/
   - images/Shuttlecock/
   - images/Shirt/
   - images/Snacks/
   - images/Drinks/
+  - images/Renting/
   - assets/login_background.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
