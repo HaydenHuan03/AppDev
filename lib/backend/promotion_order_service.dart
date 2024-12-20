@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'rent_item_data.dart';   //may be u no need this
 
 class PromotionOrderService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -10,7 +9,7 @@ class PromotionOrderService {
     required String email,
     required String idNumber,
     required double price,
-    required String promotionProcuct, //According your file
+    required String promotionProcuct, 
     required bool orderCompleted,
   }) async {
     try {
@@ -21,7 +20,7 @@ class PromotionOrderService {
         'email': email,
         'matricNum/staffID': idNumber,
         'price': 'RM ${price.toStringAsFixed(2)}',
-        'items': promotionProcuct, //According your file
+        'items': promotionProcuct, 
         'orderCompleted': orderCompleted,
       };
 
