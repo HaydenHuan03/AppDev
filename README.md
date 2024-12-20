@@ -390,6 +390,20 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> The environment of the application (All members contribute together)
 <th><a href="pubspec.yaml">pubspec.yaml</a>
 </tr>
+
+<tr>
+<th> 2
+<th> Image 
+<th> The images used for the system
+<th><a href="images/Renting">Renting Folder</a>
+</tr>
+
+<tr>
+<th> 3
+<th> Icon
+<th> The icons used for the system
+<th><a href="icons/ShoppingPlatformIcon">Shopping Platform Folder</a>
+</tr>
 </table>
 
 <br>
