@@ -68,6 +68,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> User Interface for showing available courts for booking
 <th><a href="lib/pages/booking/show_available_court.dart">click me</a>
 </tr>
+</table>
 
 ### Back-End Coding
 <table>
@@ -84,6 +85,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th>Fetching court info and time slot from database
 <th><a href="lib/data/booking_data/court_service.dart">click me</a>
 </tr>
+</table>
 
 ## Sprint 2
 ### Front-End Coding 
@@ -108,6 +110,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> Show booking record for upcoming and past activity with cancel option for users
 <th><a href="lib/pages/booking/booking_record.dart">click me</a>
 </tr>
+</table>
 
 ### Back-End Coding
 <table>
@@ -124,6 +127,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th>To handle court booking and cancellation
 <th><a href="lib/data/booking_data/court_booking_service.dart">click me</a>
 </tr>
+</table>
 
 ## Sprint 3
 ### Front-End Coding 
@@ -141,6 +145,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> Add reschedule booking feature
 <th><a href="lib/pages/booking/booking_record.dart">click me</a>
 </tr>
+</table>
 
 ### Back-End Coding
 <table>
@@ -157,6 +162,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> Library from Firebase (All members contribute together)
 <th><a href="lib/data/booking_data/court_booking_service.dart">click me</a>
 </tr>
+</table>
 
 ## Member 2: Eddy Koh Wei Hen
 ## Sprint 1
