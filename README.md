@@ -159,7 +159,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <tr>
 <th> 1
 <th> court_booking_service.dart
-<th> Library from Firebase (All members contribute together)
+<th> Add reschedule method to handle court booking reschedule feature
 <th><a href="lib/data/booking_data/court_booking_service.dart">click me</a>
 </tr>
 </table>
