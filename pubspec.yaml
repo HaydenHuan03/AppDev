@@ -84,7 +84,22 @@ flutter:
     - assets/images/icons/ShoppingPlatformIcon/
 
   # To add assets to your application, add an assets section, like this:
+<<<<<<< HEAD
   # assets:
+=======
+  assets:
+  - icons/
+  - icons/NavigationBar/
+  - icons/SaleCategories/
+  - icons/ShoppingPlatformIcon/
+  - images/racquet/
+  - images/Shuttlecock/
+  - images/Shirt/
+  - images/Snacks/
+  - images/Drinks/
+  - images/Renting/
+  - assets/login_background.png
+>>>>>>> 60273afa819430474acaea1a73aa1330e1233cf6
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

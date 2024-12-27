@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD:lib/pages/promotion/equipment_list_screen.dart
 import 'package:utm_courtify/data/promotion_data/equipment_service.dart';
 import 'promotion_order.dart'; // Import the PromotionOrderDialog
+=======
+import 'services/equipment_service.dart';
+import 'order.dart'; // Import the PromotionOrderDialog
+>>>>>>> 60273afa819430474acaea1a73aa1330e1233cf6:lib/frontend/equipment_list_screen.dart
 
 class EquipmentListScreen extends StatelessWidget {
   final String category;
