@@ -65,8 +65,42 @@ samples, guidance on mobile development, and a full API reference.
 </table>
 <br>
 
+## Member 1: Hayden Huan Kee Jiun
+## Sprint 1
+### Front-End Coding 
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> show_available_court.dart
+<th> User Interface for showing available courts for booking
+<th><a href="lib/pages/booking/show_available_court.dart">click me</a>
+</tr>
+
+### Back-End Coding
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th>court_service.dart
+<th>Fetching court info and time slot from database
+<th><a href="lib/data/booking_data/court_service.dart">click me</a>
+</tr>
+
 ## Sprint 2
-### Front-End Coding
+### Front-End Coding 
 <table>
 <tr>
 <th> No
@@ -78,39 +112,65 @@ samples, guidance on mobile development, and a full API reference.
 <tr>
 <th> 1
 <th> booking_screen.dart
-<th> Booking Page
-<th><a href="lib/pages/booking_screen.dart">click me</a>
+<th> Show booking detail to user for booking confirmation purpose
+<th><a href="lib/pages/booking/booking_screen.dart">click me</a>
 </tr>
 
 <tr>
 <th> 2
 <th> booking_record.dart
-<th> Booking Cancellation Page
-<th><a href="lib/pages/booking_record.dart">click me</a>
+<th> Show booking record for upcoming and past activity with cancel option for users
+<th><a href="lib/pages/booking/booking_record.dart">click me</a>
 </tr>
-</table>
 
 ### Back-End Coding
 <table>
-
 <tr>
 <th> No
 <th> Source code
-<th> Desription
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th>court_booking_service.dart
+<th>To handle court booking and cancellation
+<th><a href="lib/data/booking_data/court_booking_service.dart">click me</a>
+</tr>
+
+## Sprint 3
+### Front-End Coding 
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> booking_record.dart
+<th> Add reschedule booking feature
+<th><a href="lib/pages/booking/booking_record.dart">click me</a>
+</tr>
+
+### Back-End Coding
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
 <th> Location
 </tr>
 
 <tr>
 <th> 1
 <th> court_booking_service.dart
-<th> Handle the court booking information
-<th><a href="lib/data/court_booking_service.dart">click me</a>
+<th> Library from Firebase (All members contribute together)
+<th><a href="lib/data/booking_data/court_booking_service.dart">click me</a>
 </tr>
-</table>
-
-</table>
-
-<br>
 
 ## Member 2: Eddy Koh Wei Hen
 ## Sprint 1
