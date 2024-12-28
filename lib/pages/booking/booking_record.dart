@@ -194,81 +194,141 @@ Future<void> _fetchBookingsRecords() async {
   }
 
   void _showRescheduleDialog(Map<String, dynamic> booking) {
-  DateTime? selectedDate;
-  String? selectedTimeSlot;
-  
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return StatefulBuilder(
-        builder: (context, setState) {
-          return AlertDialog(
-            title: Text('Reschedule Booking'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    final date = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now().add(Duration(days: 1)),
-                      firstDate: DateTime.now(),
-                      lastDate: DateTime.now().add(Duration(days: 30)),
-                    );
-                    if (date != null) {
-                      setState(() => selectedDate = date);
-                    }
-                  },
-                  child: Text(selectedDate != null 
-                    ? DateFormat('dd MMM yyyy').format(selectedDate!)
-                    : 'Select Date'),
-                ),
-                SizedBox(height: 16),
-                if (selectedDate != null)
-                  FutureBuilder<List<String>>(
-                    future: CourtService().getTimeSLots(selectedDate: selectedDate),
-                    builder: (context, snapshot) {
-                      if (!snapshot.hasData) return CircularProgressIndicator();
-                      
-                      return DropdownButton<String>(
-                        value: selectedTimeSlot,
-                        hint: Text('Select Time Slot'),
-                        items: snapshot.data!.map((slot) {
-                          return DropdownMenuItem(
-                            value: slot,
-                            child: Text(slot),
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(() => selectedTimeSlot = value);
-                        },
+    DateTime? selectedDate;
+    String? selectedTimeSlot;
+    
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              title: Text('Reschedule Booking'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton(
+                    onPressed: () async {
+                      final date = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now().add(Duration(days: 1)),
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime.now().add(Duration(days: 30)),
                       );
+                      if (date != null) {
+                        setState(() {
+                          selectedDate = date;
+                          // Reset time slot when date changes
+                          selectedTimeSlot = null;
+                        });
+                      }
                     },
+                    child: Text(selectedDate != null 
+                      ? DateFormat('dd MMM yyyy').format(selectedDate!)
+                      : 'Select Date'),
                   ),
+                  SizedBox(height: 16),
+                  if (selectedDate != null)
+                    FutureBuilder<List<String>>(
+                      future: CourtService().getTimeSLots(selectedDate: selectedDate),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) return CircularProgressIndicator();
+                        
+                        // Filter out past time slots if the selected date is today
+                        List<String> availableSlots = snapshot.data!;
+                        if (selectedDate?.day == DateTime.now().day &&
+                            selectedDate?.month == DateTime.now().month &&
+                            selectedDate?.year == DateTime.now().year) {
+                          availableSlots = availableSlots.where((slot) {
+                            try {
+                              final now = DateTime.now();
+                              final parsedTime = DateFormat('h.mma').parse(slot);
+                              final slotDateTime = DateTime(
+                                now.year,
+                                now.month,
+                                now.day,
+                                parsedTime.hour,
+                                parsedTime.minute,
+                              );
+                              // Add a buffer of 30 minutes
+                              return slotDateTime.isAfter(now.add(Duration(minutes: 30)));
+                            } catch (e) {
+                              print('Error parsing time slot: $e');
+                              return false;
+                            }
+                          }).toList();
+                        }
+                        
+                        // If no valid slots are available
+                        if (availableSlots.isEmpty) {
+                          return Text(
+                            'No available time slots for this date',
+                            style: TextStyle(color: Colors.red),
+                          );
+                        }
+
+                        return DropdownButton<String>(
+                          value: selectedTimeSlot,
+                          hint: Text('Select Time Slot'),
+                          items: availableSlots.map((slot) {
+                            return DropdownMenuItem(
+                              value: slot,
+                              child: Text(slot),
+                            );
+                          }).toList(),
+                          onChanged: (value) {
+                            setState(() => selectedTimeSlot = value);
+                          },
+                        );
+                      },
+                    ),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: (selectedDate != null && selectedTimeSlot != null)
+                    ? () {
+                        // Final validation before confirming reschedule
+                        final now = DateTime.now();
+                        final parsedTime = DateFormat('h.mma').parse(selectedTimeSlot!);
+                        final selectedDateTime = DateTime(
+                          selectedDate!.year,
+                          selectedDate!.month,
+                          selectedDate!.day,
+                          parsedTime.hour,
+                          parsedTime.minute,
+                        );
+                        
+                        if (selectedDateTime.isBefore(now)) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Cannot reschedule to a past time'),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                          return;
+                        }
+                        
+                        _confirmReschedule(
+                          booking['id'],
+                          selectedDate!,
+                          selectedTimeSlot!,
+                        );
+                      }
+                    : null,
+                  child: Text('Reschedule'),
+                ),
               ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: (selectedDate != null && selectedTimeSlot != null)
-                  ? () => _confirmReschedule(
-                      booking['id'],
-                      selectedDate!,
-                      selectedTimeSlot!,
-                    )
-                  : null,
-                child: Text('Reschedule'),
-              ),
-            ],
-          );
-        },
-      );
-    },
-  );
-}
+            );
+          },
+        );
+      },
+    );
+  }
 
   Widget _buildBookingCard(Map<String, dynamic> booking, bool isPastBooking) {
     return Card(
