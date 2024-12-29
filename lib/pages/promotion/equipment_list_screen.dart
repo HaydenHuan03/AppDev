@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utm_courtify/data/promotion_data/equipment_service.dart';
-import 'promotion_order.dart'; // Import the PromotionOrderDialog
+import 'promotion_order.dart'; 
 
 class EquipmentListScreen extends StatelessWidget {
   final String category;
@@ -11,23 +11,33 @@ class EquipmentListScreen extends StatelessWidget {
   final EquipmentService firebaseService = EquipmentService();
 
   final Map<String, String> imageMap = {
-    'Yonex Arcsaber 11 Pro': 'assets/arc11pro.png',
-    'Victor Thruster Ryuga II': 'assets/ryuga2.png',
-    'Li-Ning Axforce Light Cannon': 'assets/axforcecannon.png',
-    'Victor A970ACE': 'assets/a970ace.png',
-    'Yonex Badminton T-Shirt': 'assets/badminton_tshirt.png',
-    'Yonex Power Cushion Aerus Z2': 'assets/power_cushion.png',
-    'Li-Ning Badminton Shorts': 'assets/badminton_shorts.png',
-    'Li-Ning No.1 String': 'assets/lining_string.png',
-    'Victor VBS-63 String': 'assets/victor_string.png',
-    'Yonex BG65 String': 'assets/bg65_string.png',
+    'Yonex Arcsaber 11 Pro': 'assets/images/Promotion/arc11pro.png',
+    'Victor Thruster Ryuga II': 'assets/images/Promotion/ryuga2.png',
+    'Li-Ning Axforce Light Cannon': 'assets/images/Promotion/axforcecannon.png',
+    'Victor A970ACE': 'assets/images/Promotion/a970ace.png',
+    'Yonex Badminton T-Shirt': 'assets/images/Promotion/badminton_tshirt.png',
+    'Yonex Power Cushion Aerus Z2': 'assets/images/Promotion/power_cushion.png',
+    'Li-Ning Badminton Shorts': 'assets/images/Promotion/badminton_shorts.png',
+    'Li-Ning No.1 String': 'assets/images/Promotion/lining_string.png',
+    'Victor VBS-63 String': 'assets/images/Promotion/victor_string.png',
+    'Yonex BG65 String': 'assets/images/Promotion/bg65_string.png',
   };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('Equipment with $discount Off'),
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
+        ),
+      ),
+        title: Text('Equipment with $discount Off',
+        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        centerTitle: true,
         backgroundColor: Color(0xFFFB2626),
       ),
       body: FutureBuilder<List<Map<String, dynamic>>>(
@@ -49,7 +59,7 @@ class EquipmentListScreen extends StatelessWidget {
               final equipment = equipmentList[index];
               final name = equipment['name'];
               final price = equipment['price'];
-              final imagePath = imageMap[name] ?? 'assets/placeholder.png'; // Default to placeholder if image not found
+              final imagePath = imageMap[name] ?? 'assets/placeholder.png';
               final double discountedPrice = firebaseService.calculateDiscountedPrice(price, discount);
 
               return Container(
@@ -80,7 +90,6 @@ class EquipmentListScreen extends StatelessWidget {
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
                               color: Color(0xFFFFFFFF),
-                              fontFamily: 'Roboto',
                             ),
                           ),
                           SizedBox(height: 8.0),
@@ -91,7 +100,6 @@ class EquipmentListScreen extends StatelessWidget {
                                 style: TextStyle(
                                   color: Color(0xFFFFFFFF),
                                   fontSize: 16.0,
-                                  fontFamily: 'Roboto',
                                 ),
                               ),
                               Text(
@@ -99,7 +107,6 @@ class EquipmentListScreen extends StatelessWidget {
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 16.0,
-                                  fontFamily: 'Roboto',
                                   decoration: TextDecoration.lineThrough,
                                 ),
                               ),
@@ -117,12 +124,11 @@ class EquipmentListScreen extends StatelessWidget {
                           SizedBox(height: 12.0),
                           ElevatedButton(
                             onPressed: () {
-                              // Navigate to the order dialog on "Buy Now" press
                               showDialog(
                                 context: context,
                                 builder: (context) => PromotionOrderDialog(
-                                  name: name, // Pass only name
-                                  price: discountedPrice, // Pass price
+                                  name: name,
+                                  price: discountedPrice,
                                 ),
                               );
                             },
@@ -139,19 +145,28 @@ class EquipmentListScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 16.0),
-                    Image.asset(
-                      imagePath,
+                    Container(
                       height: 80.0,
                       width: 80.0,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black,  // Black background for image
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12.0),
+                        child: Image.asset(
+                          imagePath,
                           height: 80.0,
                           width: 80.0,
-                          color: Colors.grey,
-                          child: Icon(Icons.error),
-                        );
-                      },
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.grey,
+                              child: Icon(Icons.error, color: Colors.white),
+                            );
+                          },
+                        ),
+                      ),
                     ),
                   ],
                 ),

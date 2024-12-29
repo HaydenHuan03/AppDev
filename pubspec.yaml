@@ -85,6 +85,22 @@ flutter:
     - assets/images/Promotion/fastest-smash-challenge.png
     - assets/images/Promotion/longest-rally-challenge.png
     - assets/images/Promotion/best-trick-shot.png
+    - assets/images/Promotion/photo1.png
+    - assets/images/Promotion/photo2.png
+    - assets/images/Promotion/photo3.png
+    - assets/images/Promotion/photo4.png
+    - assets/images/Promotion/ryuga2.png
+    - assets/images/Promotion/arc11pro.png
+    - assets/images/Promotion/axforcecannon.png
+    - assets/images/Promotion/a970ace.png
+    - assets/images/Promotion/badminton_tshirt.png
+    - assets/images/Promotion/power_cushion.png
+    - assets/images/Promotion/badminton_shorts.png
+    - assets/images/Promotion/lining_string.png
+    - assets/images/Promotion/victor_string.png
+    - assets/images/Promotion/bg65_string.png
+    
+    
 
   # To add assets to your application, add an assets section, like this:
 

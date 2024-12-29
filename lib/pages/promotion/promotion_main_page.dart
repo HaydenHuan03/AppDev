@@ -15,7 +15,7 @@ class PromotionMainPage extends StatelessWidget {
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),
-          )
+          ),
         ),
         title: Text(
           'Promotion',
@@ -28,8 +28,8 @@ class PromotionMainPage extends StatelessWidget {
         leading: IconButton(
           onPressed: () {
             Navigator.pushNamed(context, '/home');
-          } , 
-          icon: const Icon(Icons.arrow_back, color: Colors.white,)
+          },
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: Color(0xFFFB2626),
@@ -39,11 +39,10 @@ class PromotionMainPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start, // Align items at the top
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 50), // Add space below the AppBar
-            // Equipment Promotion Column
+            SizedBox(height: 50),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -53,36 +52,8 @@ class PromotionMainPage extends StatelessWidget {
                   ),
                 );
               },
-              child: Container(
-                margin: EdgeInsets.only(bottom: 30.0), // Adjust spacing between buttons
-                padding: EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(16.0),
-                  border: Border.all(color: Color(0xFFFB2626), width: 1.5),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFFB2626),
-                      spreadRadius: 3,
-                      blurRadius: 10,
-                      offset: Offset(0, 5),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Text(
-                    'Equipment Promotion',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
+              child: buildPromotionCard('Equipment Promotion'),
             ),
-
-            // Discover Voucher Column
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -92,113 +63,61 @@ class PromotionMainPage extends StatelessWidget {
                   ),
                 );
               },
-              child: Container(
-                margin: EdgeInsets.only(bottom: 30.0), // Adjust spacing between buttons
-                padding: EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(16.0),
-                  border: Border.all(color: Color(0xFFFB2626), width: 1.5),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFFB2626).withOpacity(0.5),
-                      spreadRadius: 3,
-                      blurRadius: 10,
-                      offset: Offset(0, 5),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Text(
-                    'Discover Voucher',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
+              child: buildPromotionCard('Discover Voucher'),
             ),
-
-            // My Voucher Column
             GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MyVoucherScreen(userEmail: "hayden@graduate.utm.my"),
+                    builder: (context) => MyVoucherScreen(),
                   ),
                 );
               },
-              child: Container(
-                margin: EdgeInsets.only(bottom: 30.0),
-                padding: EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(16.0),
-                  border: Border.all(color: Color(0xFFFB2626), width: 1.5),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFFB2626).withOpacity(0.5),
-                      spreadRadius: 3,
-                      blurRadius: 10,
-                      offset: Offset(0, 5),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Text(
-                    'My Voucher',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
+              child: buildPromotionCard('My Voucher'),
             ),
-
-            // Join Campaign Column (New)
             GestureDetector(
               onTap: () {
-                // Define the navigation to the Join Campaign page
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => JoinCampaignScreen(), // Replace with your screen
+                    builder: (context) => JoinCampaignScreen(),
                   ),
                 );
               },
-              child: Container(
-                padding: EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(16.0),
-                  border: Border.all(color: Color(0xFFFB2626), width: 1.5),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFFB2626).withOpacity(0.5),
-                      spreadRadius: 3,
-                      blurRadius: 10,
-                      offset: Offset(0, 5),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Text(
-                    'Join Campaign',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
+              child: buildPromotionCard('Join Campaign'),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildPromotionCard(String title) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 30.0),
+      padding: EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.circular(16.0),
+        border: Border.all(color: Color(0xFFFB2626), width: 1.5),
+        boxShadow: [
+          BoxShadow(
+            color: Color(0xFFFB2626).withOpacity(0.5),
+            spreadRadius: 3,
+            blurRadius: 10,
+            offset: Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Center(
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
       ),
     );
