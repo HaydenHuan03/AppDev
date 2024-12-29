@@ -435,7 +435,10 @@ void _showForgotPasswordDialog(BuildContext context) async {
                 ),
                 child: Text(
                   "LOGIN",
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(
+                    fontSize: 16, 
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
                 ),
               ),
             ),
