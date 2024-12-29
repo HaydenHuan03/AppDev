@@ -82,6 +82,9 @@ flutter:
     - assets/images/Renting/
     - assets/images/icons/SaleCategories/
     - assets/images/icons/ShoppingPlatformIcon/
+    - assets/images/Promotion/fastest-smash-challenge.png
+    - assets/images/Promotion/longest-rally-challenge.png
+    - assets/images/Promotion/best-trick-shot.png
 
   # To add assets to your application, add an assets section, like this:
 
