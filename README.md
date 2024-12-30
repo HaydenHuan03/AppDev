@@ -474,7 +474,7 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 <th> 3
 <th> order_service.dart<br>
 <th> File in sprint before<br>Edit the content a little bit
-<th><a href="lib/data/shopping_rental_data/order_service.dart">order_service.dart</a><br>
+<th><a href="lib/data/shopping_rental_data/order_service.dart">click me</a><br>
 </tr>
 
 <tr>
