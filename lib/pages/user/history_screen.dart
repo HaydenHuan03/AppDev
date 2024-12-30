@@ -8,12 +8,12 @@ class HistoryScreen extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
-            title: Text("Badminton Court - 12/10/2024"),
-            subtitle: Text("Status: Completed"),
+            title: Text("Court 1 - 31/12/2024"),
+            subtitle: Text("Status: Upcoming"),
           ),
           ListTile(
-            title: Text("Tennis Court - 10/11/2024"),
-            subtitle: Text("Status: Cancelled"),
+            title: Text("Court 1 - 1/12/2025"),
+            subtitle: Text("Status: Upcoming"),
           ),
           // Add more entries as needed
         ],

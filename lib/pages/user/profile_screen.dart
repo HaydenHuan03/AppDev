@@ -169,8 +169,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   // Recent bookings data (example)
   List<Map<String, dynamic>> recentBookings = [
-    {'court': 'Court A1', 'date': '2024-03-15', 'time': '10:00 AM'},
-    {'court': 'Court B2', 'date': '2024-03-12', 'time': '2:00 PM'},
+    {'court': 'Court 1', 'date': '2024-12-31', 'time': '8:00 AM'},
+    {'court': 'Court 1', 'date': '2025-01-01', 'time': '9:00 AM'},
   ];
 
 
