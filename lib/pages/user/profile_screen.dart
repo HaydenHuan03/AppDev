@@ -103,7 +103,7 @@ class _DatePickerFieldState extends State<DatePickerField> {
                 children: [
                   Text(
                     'Date of Birth',
-                    style: TextStyle(fontSize: 12, color: Colors.grey),
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold , color: Colors.white),
                   ),
                   Row(
                     children: [
@@ -111,7 +111,7 @@ class _DatePickerFieldState extends State<DatePickerField> {
                         formattedDate,
                         style: TextStyle(
                           fontSize: 16,
-                          color: widget.isEditable ? Theme.of(context).primaryColor : null,
+                          color: widget.isEditable ? Theme.of(context).primaryColor : Colors.white,
                         ),
                       ),
                       if (selectedDate != null) ...[
@@ -120,7 +120,7 @@ class _DatePickerFieldState extends State<DatePickerField> {
                           '(${calculateAge(selectedDate!)} years old)',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.grey,
+                            color: Colors.white,
                           ),
                         ),
                       ],
@@ -318,55 +318,156 @@ void _saveChanges() async {
     );
   }
 
-  Widget _buildProfileHeader() {
-    return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFFFB2626), Color(0xFF8B0000)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+Widget _buildProfileHeader() {
+  return Container(
+    padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Color(0xFFFB2626), Color(0xFF8B0000)],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
       ),
-      child: Column(
-        children: [
-          CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.white,
-            child: Text(
-              _nameController.text.split(' ').map((e) => e[0]).join(''),
-              style: TextStyle(fontSize: 30, color: Color(0xFFFB2626)),
+      borderRadius: BorderRadius.circular(16),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.2),
+          blurRadius: 10,
+          offset: Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            // Animated background circle
+            Container(
+              width: 108,
+              height: 108,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  colors: [Colors.white.withOpacity(0.2), Colors.white.withOpacity(0.1)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
             ),
-          ),
-          SizedBox(height: 16),
-          _isEditing
-              ? TextField(
-                  controller: _nameController,
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                  decoration: InputDecoration(
-                    labelText: "Display Name",
-                    labelStyle: TextStyle(color: Colors.white70),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white70),
+            // Profile avatar
+            Hero(
+              tag: 'profile-avatar',
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white, width: 3),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 8,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundColor: Colors.white,
+                  child: Text(
+                    _nameController.text.isNotEmpty
+                        ? _nameController.text.split(' ').map((e) => e.isNotEmpty ? e[0].toUpperCase() : '').join('')
+                        : 'U',
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Color(0xFFFB2626),
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 1,
                     ),
                   ),
-                )
-              : Text(
-                  _nameController.text,
-                  style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
                 ),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 20),
+        if (_isEditing)
+          AnimatedSize(
+            duration: Duration(milliseconds: 200),
+            child: TextField(
+              controller: _nameController,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+              ),
+              decoration: InputDecoration(
+                labelText: "Display Name",
+                labelStyle: TextStyle(color: Colors.white70),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white70),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white, width: 2),
+                ),
+                contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              ),
+              onSubmitted: (value) {
+                // Add your submit logic here
+              },
+            ),
+          )
+        else
           Text(
-            "969 Points",
-            style: TextStyle(color: Colors.white70, fontSize: 16),
+            _nameController.text.isNotEmpty ? _nameController.text : "User Name",
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.5,
+            ),
+            textAlign: TextAlign.center,
           ),
-        ],
-      ),
-    );
-  }
+        SizedBox(height: 12),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.star_rounded,
+              color: Colors.amber,
+              size: 20,
+            ),
+            SizedBox(width: 4),
+            Text(
+              "969 Points",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 0.5,
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}
 
 Widget _buildBookingHistory() {
-  return Card(
+  return Container(
     margin: EdgeInsets.all(16),
+    decoration: BoxDecoration(
+      color: Colors.black, // Set background to black
+      borderRadius: BorderRadius.circular(12), // Rounded corners
+      boxShadow: [
+        BoxShadow(
+          color: Colors.redAccent.withOpacity(0.3), // Red neon glow
+          blurRadius: 20, // Glow effect size
+          spreadRadius: 5, // Spread effect size
+        ),
+      ],
+    ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -377,7 +478,11 @@ Widget _buildBookingHistory() {
             children: [
               Text(
                 "My Bookings",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white, // White text
+                ),
               ),
               TextButton(
                 onPressed: () {
@@ -388,7 +493,7 @@ Widget _buildBookingHistory() {
                 },
                 child: Text(
                   "Show more",
-                  style: TextStyle(color: Color(0xFFFB2626)),
+                  style: TextStyle(color: Color(0xFFFB2626)), // Red accent colour
                 ),
               ),
             ],
@@ -400,7 +505,7 @@ Widget _buildBookingHistory() {
             child: Center(
               child: Text(
                 "No recent bookings",
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(color: Colors.grey), // Grey text for no data
               ),
             ),
           )
@@ -412,9 +517,18 @@ Widget _buildBookingHistory() {
             itemBuilder: (context, index) {
               final booking = recentBookings[index];
               return ListTile(
-                leading: Icon(Icons.sports_tennis, color: Color(0xFFFB2626)),
-                title: Text(booking['court']),
-                subtitle: Text("${booking['date']} at ${booking['time']}"),
+                leading: Icon(
+                  Icons.sports_tennis,
+                  color: Color(0xFFFB2626), // Red accent for icons
+                ),
+                title: Text(
+                  booking['court'],
+                  style: TextStyle(color: Colors.white), // White text for title
+                ),
+                subtitle: Text(
+                  "${booking['date']} at ${booking['time']}",
+                  style: TextStyle(color: Colors.grey), // Grey text for subtitle
+                ),
                 trailing: PopupMenuButton<String>(
                   onSelected: (value) {
                     if (value == 'cancel') {
@@ -426,13 +540,20 @@ Widget _buildBookingHistory() {
                   itemBuilder: (BuildContext context) => [
                     PopupMenuItem<String>(
                       value: 'cancel',
-                      child: Text('Cancel Booking'),
+                      child: Text(
+                        'Cancel Booking',
+                        style: TextStyle(color: Colors.white), // White text
+                      ),
                     ),
                     PopupMenuItem<String>(
                       value: 'reschedule',
-                      child: Text('Reschedule'),
+                      child: Text(
+                        'Reschedule',
+                        style: TextStyle(color: Colors.white), // White text
+                      ),
                     ),
                   ],
+                  color: Colors.black, // Black background for popup menu
                 ),
               );
             },
@@ -441,6 +562,7 @@ Widget _buildBookingHistory() {
     ),
   );
 }
+
 
 void _showCancelBookingDialog(Map<String, dynamic> booking) {
   showDialog(
@@ -495,115 +617,163 @@ void _showRescheduleBookingDialog(Map<String, dynamic> booking) {
   );
 }
 
-  Widget _buildProfileDetails() {
-    return Card(
-      color: Colors.blueGrey,
-      margin: EdgeInsets.all(16),
-      child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Personal Information",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 16),
-            DatePickerField(
-              controller: _dobController,
-              isEditable: _isEditing,
-              onDateSelected: (date) {
-                setState(() => _selectedDate = date);
-              },
-            ),
-            _buildDetailField(
-              icon: Icons.person,
-              label: "Gender",
-              value: _selectedGender,
-              isDropdown: _isEditing,
-            ),
-            _buildDetailField(
-              icon: Icons.email,
-              label: "Email",
-              value: _emailController.text,
-              controller: _emailController,
-              isEditable: _isEditing,
-            ),
-            _buildDetailField(
-              icon: Icons.phone,
-              label: "Phone",
-              value: _phoneController.text,
-              controller: _phoneController,
-              isEditable: _isEditing,
-            ),
-            _buildDetailField(
-              icon: Icons.info,
-              label: "Bio",
-              value: _bioController.text,
-              controller: _bioController,
-              isEditable: _isEditing,
-              maxLines: 3,
-            ),
-          ],
+Widget _buildProfileDetails() {
+  return Container(
+    margin: EdgeInsets.all(16),
+    decoration: BoxDecoration(
+      color: Colors.black, // Set the background colour to black
+      borderRadius: BorderRadius.circular(12), // Rounded corners
+      boxShadow: [
+        BoxShadow(
+          color: Colors.redAccent.withOpacity(0.3), // Red neon glow
+          blurRadius: 20, // Glow effect size
+          spreadRadius: 5, // Spread effect size
         ),
-      ),
-    );
-  }
-
-  Widget _buildDetailField({
-    required IconData icon,
-    required String label,
-    required String value,
-    TextEditingController? controller,
-    bool isEditable = false,
-    bool isDropdown = false,
-    int? maxLines,
-    VoidCallback? onTap,
-  }) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: Row(
+      ],
+    ),
+    child: Padding(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: Color(0xFFFB2626), size: 20),
-          SizedBox(width: 16),
-          Expanded(
-            child: isEditable
-                ? TextField(
-                    controller: controller,
-                    maxLines: maxLines ?? 1,
-                    decoration: InputDecoration(
-                      labelText: label,
-                      isDense: true,
-                    ),
-                  )
-                : isDropdown
-                    ? DropdownButton<String>(
-                        value: _selectedGender,
-                        items: ["Male", "Female"].map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (newValue) {
-                          setState(() => _selectedGender = newValue!);
-                        },
-                      )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            label,
-                            style: TextStyle(fontSize: 12, color: Colors.grey),
-                          ),
-                          Text(value),
-                        ],
-                      ),
+          Text(
+            "Personal Information",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white, // White text
+            ),
+          ),
+          SizedBox(height: 16),
+          DatePickerField(
+            controller: _dobController,
+            isEditable: _isEditing,
+            onDateSelected: (date) {
+              setState(() => _selectedDate = date);
+            },
+          ),
+          _buildDetailField(
+            icon: Icons.person,
+            label: "Gender",
+            value: _selectedGender,
+            isDropdown: _isEditing,
+          ),
+          _buildDetailField(
+            icon: Icons.email,
+            label: "Email",
+            value: _emailController.text,
+            controller: _emailController,
+            isEditable: _isEditing,
+          ),
+          _buildDetailField(
+            icon: Icons.phone,
+            label: "Phone",
+            value: _phoneController.text,
+            controller: _phoneController,
+            isEditable: _isEditing,
+          ),
+          _buildDetailField(
+            icon: Icons.info,
+            label: "Bio",
+            value: _bioController.text,
+            controller: _bioController,
+            isEditable: _isEditing,
+            maxLines: 3,
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
+
+Widget _buildDetailField({
+  required IconData icon,
+  required String label,
+  required String value,
+  TextEditingController? controller,
+  bool isEditable = false,
+  bool isDropdown = false,
+  int? maxLines,
+  VoidCallback? onTap,
+}) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 8),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(
+          icon,
+          color: Color(0xFFFB2626), // Red icon for dark theme
+          size: 24, // Slightly larger icon for better visibility
+        ),
+        SizedBox(width: 16),
+        Expanded(
+          child: isEditable
+              ? TextField(
+                  controller: controller,
+                  maxLines: maxLines ?? 1,
+                  style: TextStyle(
+                    color: Colors.white, // White text for input
+                    fontSize: 16,
+                  ),
+                  decoration: InputDecoration(
+                    labelText: label,
+                    labelStyle: TextStyle(
+                      color: Colors.white, // Subtle white for labels
+                      fontSize: 14,
+                    ),
+                    isDense: true,
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red), // Red underline
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red), // Focused underline
+                    ),
+                  ),
+                )
+              : isDropdown
+                  ? DropdownButton<String>(
+                      value: value,
+                      dropdownColor: Colors.black, // Dropdown menu background
+                      style: TextStyle(
+                        color: Colors.white, // White text for dropdown items
+                      ),
+                      items: ["Male", "Female"].map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value, style: TextStyle(color: Colors.white)),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {
+                        // Handle dropdown change here
+                      },
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          label,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white, // Subtle white for label
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          value,
+                          style: TextStyle(
+                            color: Colors.white, // White text for value
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+        ),
+      ],
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -654,13 +824,13 @@ void _showRescheduleBookingDialog(Map<String, dynamic> booking) {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFFFB2626),
-        child: Icon(Icons.support_agent, color: Colors.black,),
+        child: Icon(Icons.support_agent, color: Colors.white,),
         onPressed: () {
           showModalBottomSheet(
             context: context,
             builder: (context) => Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).canvasColor,
+                 color: Colors.black, // Set background to black
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: Column(
@@ -668,7 +838,10 @@ void _showRescheduleBookingDialog(Map<String, dynamic> booking) {
                 children: [
                   ListTile(
                     leading: Icon(Icons.support, color: Color(0xFFFB2626)),
-                    title: Text("Customer Support"),
+                    title: Text(
+                      "Customer Support",
+                      style: TextStyle(color: Colors.white),
+                     ), // Set text colour to white),
                     onTap: () {
                       Navigator.push(
                         context,
@@ -678,7 +851,10 @@ void _showRescheduleBookingDialog(Map<String, dynamic> booking) {
                   ),
                   ListTile(
                     leading: Icon(Icons.local_hospital, color: Color(0xFFFB2626)),
-                    title: Text("Emergency Contact"),
+                    title: Text(
+                      "Emergency Contact",
+                      style: TextStyle(color: Colors.white),
+                    ),
                     onTap: () {
                       Navigator.push(
                         context,
