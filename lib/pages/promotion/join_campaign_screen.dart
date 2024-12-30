@@ -105,13 +105,18 @@ class MyCampaign extends StatelessWidget {
   MyCampaign({required this.userEmail});
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<Map<String, dynamic>>>(
-      future: CampaignService().fetchUserCampaigns(userEmail),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return Center(child: Text("You haven't joined any campaigns"));
-        }
+Widget build(BuildContext context) {
+  return FutureBuilder<List<Map<String, dynamic>>>(
+    future: CampaignService().fetchUserCampaigns(userEmail),
+    builder: (context, snapshot) {
+      if (!snapshot.hasData || snapshot.data!.isEmpty) {
+        return Center(
+          child: Text(
+            "You haven't joined any campaigns",
+            style: TextStyle(color: Colors.white), // Set text color to white
+          ),
+        );
+      }
         final joinedCampaigns = snapshot.data!;
         return ListView.builder(
           padding: EdgeInsets.all(16.0),
