@@ -742,6 +742,41 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
+## Sprint 3
+### Front-End Coding 
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> join_campaign.dart
+<th> Add join campaign feature
+<th><a href="lib/pages/promotion/join_campaign.dart">click me</a>
+</tr>
+</table>
+
+### Back-End Coding
+<table>
+<tr>
+<th> No
+<th> Source code
+<th> Description
+<th> Location
+</tr>
+
+<tr>
+<th> 1
+<th> campaign_service.dart
+<th> Retrieve available campaign from database
+<th><a href="lib/data/promotion_data/campaign_service.dart">click me</a>
+</tr>
+</table>
+
 <br>
 
 <br>
