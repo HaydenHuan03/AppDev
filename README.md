@@ -550,6 +550,7 @@ To check for the code, please go through these folders: <a href="lib/pages/">fro
 </table>
 
 <br>
+
 ## Final Integration
 ### All members contribute together to combine and integrate the code.
 To check for the code, please go through these folders: <a href="lib/pages/">front end</a> and <a href="lib/data/">back end</a> 
@@ -786,6 +787,7 @@ To check for the code, please go through these folders: <a href="lib/pages/">fro
 </table>
 
 <br>
+
 ## Final Integration
 ### All members contribute together to combine and integrate the code.
 To check for the code, please go through these folders: <a href="lib/pages/">front end</a> and <a href="lib/data/">back end</a> 
