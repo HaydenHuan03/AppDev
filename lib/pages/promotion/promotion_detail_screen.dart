@@ -4,6 +4,7 @@ import 'equipment_list_screen.dart';
 
 class PromotionDetailScreen extends StatelessWidget {
   final Promotion promotion;
+  
 
   const PromotionDetailScreen({required this.promotion});
 
