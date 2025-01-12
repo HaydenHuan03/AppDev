@@ -166,8 +166,8 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 
 ## Final Integration
 ### All members contribute together to combine and integrate the code.
-To check for the code, please go through this folder: <a href="lib/">click me</a>
-<br>
+To check for the code, please go through these folders: <a href="lib/pages/">front end</a> and <a href="lib/data/">back end</a> 
+<br><br>
 
 ## Member 2: Eddy Koh Wei Hen
 ## Sprint 1
@@ -552,8 +552,8 @@ To check for the code, please go through this folder: <a href="lib/">click me</a
 <br>
 ## Final Integration
 ### All members contribute together to combine and integrate the code.
-To check for the code, please go through this folder: <a href="lib/">click me</a>
-<br>
+To check for the code, please go through these folders: <a href="lib/pages/">front end</a> and <a href="lib/data/">back end</a> 
+<br><br>
 
 ## Member 3: Ooi Wei Sian
 ## Sprint 1
@@ -788,8 +788,8 @@ To check for the code, please go through this folder: <a href="lib/">click me</a
 <br>
 ## Final Integration
 ### All members contribute together to combine and integrate the code.
-To check for the code, please go through this folder: <a href="lib/">click me</a>
-<br>
+To check for the code, please go through these folders: <a href="lib/pages/">front end</a> and <a href="lib/data/">back end</a> 
+<br><br>
 
 ## Member 4: Chan Qing Yee
 ## Sprint 1
@@ -985,4 +985,9 @@ To check for the code, please go through this folder: <a href="lib/">click me</a
 </table>
 
 <br>
+
+## Final Integration
+### All members contribute together to combine and integrate the code.
+To check for the code, please go through these folders: <a href="lib/pages/">front end</a> and <a href="lib/data/">back end</a> 
+<br><br>
 
