@@ -164,6 +164,11 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </tr>
 </table>
 
+## Final Integration
+### All members contribute together to combine and integrate the code.
+To check for the code, please go through this folder: <a href="lib/">click me</a>
+<br>
+
 ## Member 2: Eddy Koh Wei Hen
 ## Sprint 1
 ### Front-End Coding 
@@ -545,7 +550,10 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </table>
 
 <br>
-
+## Final Integration
+### All members contribute together to combine and integrate the code.
+To check for the code, please go through this folder: <a href="lib/">click me</a>
+<br>
 
 ## Member 3: Ooi Wei Sian
 ## Sprint 1
@@ -778,7 +786,9 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </table>
 
 <br>
-
+## Final Integration
+### All members contribute together to combine and integrate the code.
+To check for the code, please go through this folder: <a href="lib/">click me</a>
 <br>
 
 ## Member 4: Chan Qing Yee
@@ -975,4 +985,4 @@ A new Flutter project from Group Superlollipop to help UTMians to have a better 
 </table>
 
 <br>
->>>>>>> 60273afa819430474acaea1a73aa1330e1233cf6
+
