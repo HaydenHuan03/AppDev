@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
@@ -12,6 +13,7 @@ class BookingRecord extends StatefulWidget {
 }
 
 class _BookingRecordState extends State<BookingRecord> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final CourtBookingService _bookingService = CourtBookingService();
   List<Map<String, dynamic>> _upcomingBookings = [];
   List<Map<String, dynamic>> _pastBookings = [];
@@ -29,9 +31,15 @@ class _BookingRecordState extends State<BookingRecord> {
 Future<void> _fetchBookingsRecords() async {
   try {
     final now = DateTime.now();
+    final curr_user = _auth.currentUser;
+
+    if(curr_user == null){
+      throw Exception('User not authenticated');
+    }
     
     final querySnapshot = await FirebaseFirestore.instance
         .collection('court_bookings')
+        .where('userName', isEqualTo: curr_user.displayName)
         .where('status', isEqualTo: 'active')
         .orderBy('bookingDate', descending: true)
         .get();
@@ -40,14 +48,17 @@ Future<void> _fetchBookingsRecords() async {
       final allBookings = querySnapshot.docs.map((doc) {
         return {
           'id': doc.id,
+          // 'userName': doc.data()['userName'],
           ...doc.data(),
         };
       }).toList();
 
-      _upcomingBookings = allBookings.where((booking) {
+      _upcomingBookings = allBookings
+      .where((booking)  {
         try {
           final bookingDate = (booking['bookingDate'] as Timestamp).toDate();
           final timeSlot = booking['timeSlot'] as String;
+          final userName = curr_user.displayName;
           
           // Parse using exact format "h.mma"
           final parsedTime = DateFormat('h.mma').parse(timeSlot);
@@ -60,7 +71,7 @@ Future<void> _fetchBookingsRecords() async {
             parsedTime.minute,
           );
           
-          return bookingDateTime.isAfter(now);
+          return bookingDateTime.isAfter(now) && userName==curr_user.displayName;
         } catch (e) {
           print('Error processing upcoming booking: $e');
           print('Problematic time slot: ${booking['timeSlot']}');
@@ -72,6 +83,7 @@ Future<void> _fetchBookingsRecords() async {
         try {
           final bookingDate = (booking['bookingDate'] as Timestamp).toDate();
           final timeSlot = booking['timeSlot'] as String;
+          final userName = curr_user.displayName;
           
           // Parse using exact format "h.mma"
           final parsedTime = DateFormat('h.mma').parse(timeSlot);
@@ -84,7 +96,7 @@ Future<void> _fetchBookingsRecords() async {
             parsedTime.minute,
           );
           
-          return bookingDateTime.isBefore(now);
+          return bookingDateTime.isBefore(now) && userName==curr_user.displayName;
         } catch (e) {
           print('Error processing past booking: $e');
           print('Problematic time slot: ${booking['timeSlot']}');
@@ -97,6 +109,10 @@ Future<void> _fetchBookingsRecords() async {
   } catch (e) {
     print('Error fetching bookings: $e');
     setState(() => _isLoading = false);
+    String errorMessage = 'Error fetching bookings';
+    if (e.toString().contains('User not authenticated')) {
+      errorMessage = 'Please login to view your bookings';
+    }
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
