@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:utm_courtify/data/booking_data/court_booking_service.dart';
@@ -22,6 +23,7 @@ class CourtBookingScreen extends StatefulWidget {
 
 class _CourtBookingScreenState extends State<CourtBookingScreen> {
   bool _isBooking = false;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   void _confirmBooking() async {
     setState(() {
@@ -29,12 +31,18 @@ class _CourtBookingScreenState extends State<CourtBookingScreen> {
     });
 
     try {
+      final User? currentUser = _auth.currentUser;
+      if (currentUser == null) {
+        throw Exception("You must logged in to book a court");
+      }
+
       final bookingService = CourtBookingService();
       final booked = await bookingService.bookCourt(
         courtId: widget.court['id'],
         courtName: widget.court['name'],
         bookingDate: widget.selectedDate,
         timeSlot: widget.selectedTimeSlot!,
+        userId: currentUser.uid
       );
 
       // Show success message

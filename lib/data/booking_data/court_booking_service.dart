@@ -30,6 +30,7 @@ class CourtBookingService {
     required String courtName,
     required DateTime bookingDate,
     required String timeSlot,
+    required String userId
   }) async {
     try {
       final userData = await _getCurrentUserData();
@@ -60,6 +61,7 @@ class CourtBookingService {
         'bookingDate': normalizedDate,
         'timeSlot': timeSlot,
         'bookingUserName': userData['userName'],
+        'userId': userId,
         'bookingTimestamp': FieldValue.serverTimestamp(),
         'status': 'active',
       });

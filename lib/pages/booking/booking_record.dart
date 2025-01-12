@@ -38,8 +38,9 @@ Future<void> _fetchBookingsRecords() async {
     }
     
     final querySnapshot = await FirebaseFirestore.instance
+    
         .collection('court_bookings')
-        .where('userName', isEqualTo: curr_user.displayName)
+        .where('userId', isEqualTo: curr_user.uid)
         .where('status', isEqualTo: 'active')
         .orderBy('bookingDate', descending: true)
         .get();
@@ -48,8 +49,9 @@ Future<void> _fetchBookingsRecords() async {
       final allBookings = querySnapshot.docs.map((doc) {
         return {
           'id': doc.id,
-          // 'userName': doc.data()['userName'],
+          'userId': doc.data()['userId'],
           ...doc.data(),
+          
         };
       }).toList();
 
@@ -58,7 +60,6 @@ Future<void> _fetchBookingsRecords() async {
         try {
           final bookingDate = (booking['bookingDate'] as Timestamp).toDate();
           final timeSlot = booking['timeSlot'] as String;
-          final userName = curr_user.displayName;
           
           // Parse using exact format "h.mma"
           final parsedTime = DateFormat('h.mma').parse(timeSlot);
@@ -71,7 +72,7 @@ Future<void> _fetchBookingsRecords() async {
             parsedTime.minute,
           );
           
-          return bookingDateTime.isAfter(now) && userName==curr_user.displayName;
+          return bookingDateTime.isAfter(now);
         } catch (e) {
           print('Error processing upcoming booking: $e');
           print('Problematic time slot: ${booking['timeSlot']}');
@@ -83,7 +84,6 @@ Future<void> _fetchBookingsRecords() async {
         try {
           final bookingDate = (booking['bookingDate'] as Timestamp).toDate();
           final timeSlot = booking['timeSlot'] as String;
-          final userName = curr_user.displayName;
           
           // Parse using exact format "h.mma"
           final parsedTime = DateFormat('h.mma').parse(timeSlot);
@@ -95,8 +95,8 @@ Future<void> _fetchBookingsRecords() async {
             parsedTime.hour,
             parsedTime.minute,
           );
-          
-          return bookingDateTime.isBefore(now) && userName==curr_user.displayName;
+
+          return bookingDateTime.isBefore(now);
         } catch (e) {
           print('Error processing past booking: $e');
           print('Problematic time slot: ${booking['timeSlot']}');
