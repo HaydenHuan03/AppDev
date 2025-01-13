@@ -151,13 +151,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool _isEditing = false;
   
   // Controllers for editable fields
-  final _nameController = TextEditingController(text: "CHAN Qing Yee");
-  final _dobController = TextEditingController(text: "1995-08-15");
-  final _emailController = TextEditingController(text: "qingyee0219@gmail.com");
-  final _phoneController = TextEditingController(text: "+60137339035");
-  final _bioController = TextEditingController(text: "Badminton lover and enthusiast.");
+  final _nameController = TextEditingController();
+  final _dobController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _bioController = TextEditingController();
 
   String _selectedGender = "Male";
+  DateTime? _selectedDate;
   
   @override
   void dispose() {
@@ -169,101 +170,55 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.dispose();
   }
 
-  // Recent bookings data (example)
-  List<Map<String, dynamic>> recentBookings = [
-    {'court': 'Court 1', 'date': '2024-12-31', 'time': '8:00 AM'},
-    {'court': 'Court 1', 'date': '2025-01-01', 'time': '9:00 AM'},
-  ];
-
-
-Future<void> _loadUserProfile() async {
-  try {
-    final userData = await widget._profileService.getCurrentUserProfile();
-    if (userData != null) {
-      setState(() {
-        _nameController.text = userData['displayName'] ?? '';
-        _selectedGender = userData['gender'] ?? 'Male';
-        _emailController.text = userData['email'] ?? '';
-        _phoneController.text = userData['phoneNumber'] ?? '';
-        _bioController.text = userData['bio'] ?? '';
-        
-        if (userData['dateOfBirth'] != null) {
-          _selectedDate = DateTime.parse(userData['dateOfBirth']);
-          _dobController.text = _selectedDate!.toIso8601String();
-        }
-      });
-    }
-  } catch (e) {
-    _showErrorSnackBar('Failed to load profile data');
-  }
-}
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime(1995, 8, 15),
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
-      builder: (context, child) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.dark(
-              primary: Color(0xFFFB2626),
-              onPrimary: Colors.white,
-              surface: Colors.grey[900]!,
-              onSurface: Colors.white,
-            ),
-          ),
-          child: child!,
-        );
-      },
-    );
-    if (picked != null) {
-      setState(() {
-        _dobController.text = "${picked.year}-${picked.month.toString().padLeft(2, '0')}-${picked.day.toString().padLeft(2, '0')}";
-      });
-    }
-  }
-
-  DateTime? _selectedDate;
-
   @override
   void initState() {
     super.initState();
-
-    try {
-      _selectedDate = DateTime.parse(_dobController.text);
-    } catch (e) {
-      _selectedDate = DateTime.now().subtract(Duration(days: 365 * 18));
-      _dobController.text = _selectedDate!.toIso8601String().split('T')[0];
-    }
-
     _loadUserProfile();
-}
-    
+  }
 
-void _saveChanges() async {
+  Future<void> _loadUserProfile() async {
+    try {
+      final userData = await widget._profileService.getCurrentUserProfile();
+      if (userData != null) {
+        setState(() {
+          _nameController.text = userData['displayName'] ?? '';
+          _selectedGender = userData['gender'] ?? 'Male';
+          _emailController.text = userData['email'] ?? '';
+          _phoneController.text = userData['phoneNumber'] ?? '';
+          _bioController.text = userData['bio'] ?? '';
+          
+          if (userData['dateOfBirth'] != null) {
+            _selectedDate = DateTime.parse(userData['dateOfBirth']);
+            _dobController.text = _selectedDate!.toIso8601String().split('T')[0];
+          }
+        });
+      }
+    } catch (e) {
+      _showErrorSnackBar('Failed to load profile data');
+    }
+  }
 
-  if (_nameController.text.isEmpty) {
+  void _saveChanges() async {
+    if (_nameController.text.isEmpty) {
       _showErrorSnackBar("Name cannot be empty");
       return;
     }
 
-  try {
-    await widget._profileService.updateProfile(
-      displayName: _nameController.text,
-      gender: _selectedGender,
-      dateOfBirth: _selectedDate,
-      phoneNumber: _phoneController.text,
-      bio: _bioController.text,
-    );
-    
-    setState(() => _isEditing = false);
-    _showSuccessSnackBar("Profile updated successfully!");
-  } catch (e) {
-    _showErrorSnackBar(e.toString());
+    try {
+      await widget._profileService.updateProfile(
+        displayName: _nameController.text,
+        gender: _selectedGender,
+        dateOfBirth: _selectedDate,
+        phoneNumber: _phoneController.text,
+        bio: _bioController.text,
+      );
+      
+      setState(() => _isEditing = false);
+      _showSuccessSnackBar("Profile updated successfully!");
+    } catch (e) {
+      _showErrorSnackBar(e.toString());
+    }
   }
-}
 
   void _showErrorSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -285,28 +240,41 @@ void _saveChanges() async {
     );
   }
 
-  void _showLogoutDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text("Logout"),
-        content: Text("Are you sure you want to logout?"),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text("Cancel"),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, '/');
-            },
-            child: Text("Logout", style: TextStyle(color: Color(0xFFFB2626))),
-          ),
-        ],
+void _showLogoutDialog() {
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      backgroundColor: Colors.black87, // Dark background
+      title: Text(
+        "Logout",
+        style: TextStyle(color: Colors.white), // White text
       ),
-    );
-  }
+      content: Text(
+        "Are you sure you want to logout?",
+        style: TextStyle(color: Colors.white), // White text
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text(
+            "Cancel",
+            style: TextStyle(color: Colors.white), // White text
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+            Navigator.pushReplacementNamed(context, '/');
+          },
+          child: Text(
+            "Logout",
+            style: TextStyle(color: Colors.red), // Red text for logout button
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
 Widget _buildProfileHeader() {
   return Container(
@@ -418,27 +386,6 @@ Widget _buildProfileHeader() {
             ),
             textAlign: TextAlign.center,
           ),
-        SizedBox(height: 12),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.star_rounded,
-              color: Colors.amber,
-              size: 20,
-            ),
-            SizedBox(width: 4),
-            Text(
-              "969 Points",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                letterSpacing: 0.5,
-              ),
-            ),
-          ],
-        ),
       ],
     ),
   );
@@ -618,163 +565,186 @@ Widget _buildBookingHistory() {
     );
   }
 
-Widget _buildProfileDetails() {
-  return Container(
-    margin: EdgeInsets.all(16),
-    decoration: BoxDecoration(
-      color: Colors.black, // Set the background colour to black
-      borderRadius: BorderRadius.circular(12), // Rounded corners
-      boxShadow: [
-        BoxShadow(
-          color: Colors.redAccent.withOpacity(0.3), // Red neon glow
-          blurRadius: 20, // Glow effect size
-          spreadRadius: 5, // Spread effect size
-        ),
-      ],
-    ),
-    child: Padding(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Personal Information",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.white, // White text
-            ),
-          ),
-          SizedBox(height: 16),
-          DatePickerField(
-            controller: _dobController,
-            isEditable: _isEditing,
-            onDateSelected: (date) {
-              setState(() => _selectedDate = date);
-            },
-          ),
-          _buildDetailField(
-            icon: Icons.person,
-            label: "Gender",
-            value: _selectedGender,
-            isDropdown: _isEditing,
-          ),
-          _buildDetailField(
-            icon: Icons.email,
-            label: "Email",
-            value: _emailController.text,
-            controller: _emailController,
-            isEditable: _isEditing,
-          ),
-          _buildDetailField(
-            icon: Icons.phone,
-            label: "Phone",
-            value: _phoneController.text,
-            controller: _phoneController,
-            isEditable: _isEditing,
-          ),
-          _buildDetailField(
-            icon: Icons.info,
-            label: "Bio",
-            value: _bioController.text,
-            controller: _bioController,
-            isEditable: _isEditing,
-            maxLines: 3,
+  Widget _buildProfileDetails() {
+    return Container(
+      margin: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.redAccent.withOpacity(0.3),
+            blurRadius: 20,
+            spreadRadius: 5,
           ),
         ],
       ),
-    ),
-  );
-}
-
-Widget _buildDetailField({
-  required IconData icon,
-  required String label,
-  required String value,
-  TextEditingController? controller,
-  bool isEditable = false,
-  bool isDropdown = false,
-  int? maxLines,
-  VoidCallback? onTap,
-}) {
-  return Padding(
-    padding: EdgeInsets.symmetric(vertical: 8),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(
-          icon,
-          color: Color(0xFFFB2626), // Red icon for dark theme
-          size: 24, // Slightly larger icon for better visibility
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Personal Information",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(height: 16),
+            DatePickerField(
+              controller: _dobController,
+              isEditable: _isEditing,
+              onDateSelected: (date) {
+                setState(() {
+                  _selectedDate = date;
+                  _dobController.text = date.toIso8601String().split('T')[0];
+                });
+              },
+            ),
+            _buildDetailField(
+              icon: Icons.person,
+              label: "Gender",
+              value: _selectedGender,
+              isDropdown: true,
+              isEditable: _isEditing,
+            ),
+            _buildDetailField(
+              icon: Icons.email,
+              label: "Email",
+              value: _emailController.text,
+              isEditable: true,
+            ),
+            _buildDetailField(
+              icon: Icons.phone,
+              label: "Phone",
+              value: _phoneController.text,
+              controller: _phoneController,
+              isEditable: _isEditing,
+            ),
+            _buildDetailField(
+              icon: Icons.info,
+              label: "Bio",
+              value: _bioController.text,
+              controller: _bioController,
+              isEditable: _isEditing,
+              maxLines: 3,
+            ),
+          ],
         ),
-        SizedBox(width: 16),
-        Expanded(
-          child: isEditable
-              ? TextField(
-                  controller: controller,
-                  maxLines: maxLines ?? 1,
+      ),
+    );
+  }
+
+  Widget _buildDetailField({
+    required IconData icon,
+    required String label,
+    required String value,
+    TextEditingController? controller,
+    bool isEditable = false,
+    bool isDropdown = false,
+    int? maxLines,
+    VoidCallback? onTap,
+  }) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            icon,
+            color: Color(0xFFFB2626),
+            size: 24,
+          ),
+          SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
                   style: TextStyle(
-                    color: Colors.white, // White text for input
-                    fontSize: 16,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                  decoration: InputDecoration(
-                    labelText: label,
-                    labelStyle: TextStyle(
-                      color: Colors.white, // Subtle white for labels
-                      fontSize: 14,
+                ),
+                SizedBox(height: 4),
+                if (label == "Email")
+                  Text(
+                    value,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
                     ),
-                    isDense: true,
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red), // Red underline
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red), // Focused underline
-                    ),
-                  ),
-                )
-              : isDropdown
-                  ? DropdownButton<String>(
-                      value: value,
-                      dropdownColor: Colors.black, // Dropdown menu background
-                      style: TextStyle(
-                        color: Colors.white, // White text for dropdown items
+                  )
+                else if (label == "Gender" && isEditable)
+                  Container(
+                    width: double.infinity,
+                    child: DropdownButtonFormField<String>(
+                      value: _selectedGender,
+                      dropdownColor: Colors.grey[900],
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
                       items: ["Male", "Female"].map((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: Text(value, style: TextStyle(color: Colors.white)),
+                          child: Text(
+                            value,
+                            style: TextStyle(color: Colors.white),
+                          ),
                         );
                       }).toList(),
-                      onChanged: (newValue) {
-                        // Handle dropdown change here
-                      },
-                    )
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          label,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white, // Subtle white for label
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          value,
-                          style: TextStyle(
-                            color: Colors.white, // White text for value
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
+                      onChanged: _isEditing
+                          ? (newValue) {
+                              setState(() {
+                                _selectedGender = newValue!;
+                              });
+                            }
+                          : null,
                     ),
-        ),
-      ],
-    ),
-  );
-}
+                  )
+                else if (isEditable)
+                  TextField(
+                    controller: controller,
+                    maxLines: maxLines ?? 1,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                    decoration: InputDecoration(
+                      isDense: true,
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red),
+                      ),
+                    ),
+                  )
+                else
+                  Text(
+                    value,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
