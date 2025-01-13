@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; 
 import 'package:utm_courtify/pages/user/history_screen.dart';
 import 'package:utm_courtify/pages/user/customer_support_screen.dart';
 import 'package:utm_courtify/pages/user/emergency_contacts_screen.dart';
 import 'package:utm_courtify/pages/booking/booking_record.dart';
 import 'package:utm_courtify/data/user_data/firebase_profile_service.dart';
-
+import 'package:utm_courtify/data/booking_data/court_booking_service.dart';
 
 class DatePickerField extends StatefulWidget {
   final TextEditingController controller;
@@ -146,6 +147,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final CourtBookingService _bookingService = CourtBookingService();
   bool _isEditing = false;
   
   // Controllers for editable fields
@@ -195,18 +197,6 @@ Future<void> _loadUserProfile() async {
     _showErrorSnackBar('Failed to load profile data');
   }
 }
-
-  Future<void> _loadRecentBookings() async {
-    try {
-      final bookings = await widget._profileService.getRecentBookings(limit: 3);
-      setState(() {
-        recentBookings = bookings;
-      });
-    } catch (e) {
-      print('Failed to load recent bookings: $e');
-      // Optionally show a snackbar or handle the error
-    }
-  }
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -455,167 +445,178 @@ Widget _buildProfileHeader() {
 }
 
 Widget _buildBookingHistory() {
-  return Container(
-    margin: EdgeInsets.all(16),
-    decoration: BoxDecoration(
-      color: Colors.black, // Set background to black
-      borderRadius: BorderRadius.circular(12), // Rounded corners
-      boxShadow: [
-        BoxShadow(
-          color: Colors.redAccent.withOpacity(0.3), // Red neon glow
-          blurRadius: 20, // Glow effect size
-          spreadRadius: 5, // Spread effect size
-        ),
-      ],
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.all(16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "My Bookings",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white, // White text
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => BookingRecord()),
-                  );
-                },
-                child: Text(
-                  "Show more",
-                  style: TextStyle(color: Color(0xFFFB2626)), // Red accent colour
-                ),
-              ),
-            ],
+    return Container(
+      margin: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.redAccent.withOpacity(0.3),
+            blurRadius: 20,
+            spreadRadius: 5,
           ),
-        ),
-        if (recentBookings.isEmpty)
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Padding(
             padding: EdgeInsets.all(16),
-            child: Center(
-              child: Text(
-                "No recent bookings",
-                style: TextStyle(color: Colors.grey), // Grey text for no data
-              ),
-            ),
-          )
-        else
-          ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: recentBookings.length,
-            itemBuilder: (context, index) {
-              final booking = recentBookings[index];
-              return ListTile(
-                leading: Icon(
-                  Icons.sports_tennis,
-                  color: Color(0xFFFB2626), // Red accent for icons
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "My Bookings",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-                title: Text(
-                  booking['court'],
-                  style: TextStyle(color: Colors.white), // White text for title
-                ),
-                subtitle: Text(
-                  "${booking['date']} at ${booking['time']}",
-                  style: TextStyle(color: Colors.grey), // Grey text for subtitle
-                ),
-                trailing: PopupMenuButton<String>(
-                  onSelected: (value) {
-                    if (value == 'cancel') {
-                      _showCancelBookingDialog(booking);
-                    } else if (value == 'reschedule') {
-                      _showRescheduleBookingDialog(booking);
-                    }
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BookingRecord()),
+                    );
                   },
-                  itemBuilder: (BuildContext context) => [
-                    PopupMenuItem<String>(
-                      value: 'cancel',
-                      child: Text(
-                        'Cancel Booking',
-                        style: TextStyle(color: Colors.white), // White text
-                      ),
-                    ),
-                    PopupMenuItem<String>(
-                      value: 'reschedule',
-                      child: Text(
-                        'Reschedule',
-                        style: TextStyle(color: Colors.white), // White text
-                      ),
-                    ),
-                  ],
-                  color: Colors.black, // Black background for popup menu
+                  child: Text(
+                    "Show all",
+                    style: TextStyle(color: Color(0xFFFB2626)),
+                  ),
                 ),
-              );
-            },
+              ],
+            ),
           ),
-      ],
-    ),
-  );
-}
+          FutureBuilder<List<Map<String, dynamic>>>(
+            future: _bookingService.getUserBookings(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: CircularProgressIndicator(
+                      color: Color(0xFFFB2626),
+                    ),
+                  ),
+                );
+              }
 
+              if (snapshot.hasError) {
+                return Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Center(
+                    child: Text(
+                      "Error loading bookings: ${snapshot.error}",
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+                );
+              }
 
-void _showCancelBookingDialog(Map<String, dynamic> booking) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Cancel Booking'),
-        content: Text('Are you sure you want to cancel your booking for ${booking['court']} on ${booking['date']} at ${booking['time']}?'),
-        actions: [
-          TextButton(
-            child: Text('No'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          TextButton(
-            child: Text('Yes'),
-            onPressed: () {
-              // TODO: Implement actual cancellation logic
-              Navigator.of(context).pop();
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Booking cancelled'),
-                  backgroundColor: Colors.red,
-                ),
+              final bookings = snapshot.data ?? [];
+
+              if (bookings.isEmpty) {
+                return Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Center(
+                    child: Text(
+                      "No upcoming bookings",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                );
+              }
+
+              // Show only the first 3 bookings
+              final displayBookings = bookings.take(2).toList();
+
+              return ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: displayBookings.length,
+                itemBuilder: (context, index) {
+                  final booking = displayBookings[index];
+                  final DateTime bookingDate = (booking['bookingDate'] as Timestamp).toDate();
+                  final bool isToday = bookingDate.year == DateTime.now().year &&
+                      bookingDate.month == DateTime.now().month &&
+                      bookingDate.day == DateTime.now().day;
+
+                  return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      border: Border.all(color: Color(0xFFFB2626), width: 2),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.sports_tennis,
+                          color: Color(0xFFFB2626),
+                          size: 32,
+                        ),
+                        SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    booking['courtName'] ?? 'Unknown Court',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  if (isToday)
+                                    Container(
+                                      margin: EdgeInsets.only(left: 8),
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                        vertical: 4,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFFFB2626),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Text(
+                                        'TODAY',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                "${bookingDate.day}/${bookingDate.month}/${bookingDate.year} at ${booking['timeSlot']}",
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               );
             },
           ),
         ],
-      );
-    },
-  );
-}
-
-void _showRescheduleBookingDialog(Map<String, dynamic> booking) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Reschedule Booking'),
-        content: Text('Reschedule feature for ${booking['court']} is coming soon.'),
-        actions: [
-          TextButton(
-            child: Text('OK'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
-  );
-}
+      ),
+    );
+  }
 
 Widget _buildProfileDetails() {
   return Container(

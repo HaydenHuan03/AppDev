@@ -70,6 +70,7 @@ class CartListWidget extends StatelessWidget {
   }
 }
 
+
 // About cart list page - Adjust item space in container
 class CartItemWidget extends StatelessWidget {
   final Product product;

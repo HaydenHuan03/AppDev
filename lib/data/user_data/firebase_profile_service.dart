@@ -237,6 +237,117 @@ class ProfileService {
       return 'Upcoming';
     }
   }
+
+  Future<List<Map<String, dynamic>>> getBookings({
+    bool Function(Map<String, dynamic>)? filter,
+    int Function(Map<String, dynamic>, Map<String, dynamic>)? orderBy,
+    int? limit,
+  }) async {
+    try {
+      final String? userId = _auth.currentUser?.uid;
+      if (userId == null) throw Exception('No authenticated user found');
+
+      print('Fetching bookings for user: $userId'); // Debug print
+
+      // Query with correct field names
+      QuerySnapshot snapshot = await _firestore
+          .collection('court_bookings')
+          .where('userId', isEqualTo: userId)
+          .get();
+
+      print('Found ${snapshot.docs.length} bookings'); // Debug print
+
+      // Convert and filter in memory
+      List<Map<String, dynamic>> bookings = snapshot.docs.map((doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        print('Booking data: $data'); // Debug print
+
+        // Make sure to handle potential null values
+        Timestamp? bookingDate = data['bookingDate'] as Timestamp?;
+        if (bookingDate == null) {
+          print('Warning: bookingDate is null for document ${doc.id}');
+          return null;
+        }
+
+        final DateTime dateTime = bookingDate.toDate();
+        
+        return {
+          'id': doc.id,
+          'court': data['courtName'] ?? 'Unknown Court',
+          'date': _formatDate(bookingDate),
+          'time': data['timeSlot'] ?? 'No time specified',
+          'status': data['status'] ?? 'active',
+          'rawDateTime': dateTime,
+          'userId': data['userId'] ?? '',
+          'courtId': data['courtId'] ?? '',
+        };
+      })
+      .whereType<Map<String, dynamic>>() // Filter out null values
+      .toList();
+
+      // Filter active and future bookings
+      final now = DateTime.now();
+      bookings = bookings.where((booking) {
+        final DateTime bookingDate = booking['rawDateTime'] as DateTime;
+        final bool isActive = booking['status'] == 'active';
+        final bool isFuture = bookingDate.isAfter(now);
+        
+        print('Booking ${booking['id']}: isActive=$isActive, isFuture=$isFuture'); // Debug print
+        
+        return isActive && isFuture;
+      }).toList();
+
+      // Sort by date
+      bookings.sort((a, b) {
+        DateTime dateTimeA = a['rawDateTime'] as DateTime;
+        DateTime dateTimeB = b['rawDateTime'] as DateTime;
+        return dateTimeA.compareTo(dateTimeB);
+      });
+
+      // Apply limit
+      if (limit != null && bookings.length > limit) {
+        bookings = bookings.take(limit).toList();
+      }
+
+      print('Returning ${bookings.length} filtered bookings'); // Debug print
+      return bookings;
+    } catch (e) {
+      print('Error fetching bookings: $e');
+      rethrow;
+    }
+  }
+
+  // Helper method to get a single booking by ID
+  Future<Map<String, dynamic>?> getBookingById(String bookingId) async {
+    try {
+      final doc = await _firestore
+          .collection('court_bookings')
+          .doc(bookingId)
+          .get();
+
+      if (!doc.exists) return null;
+
+      final data = doc.data() as Map<String, dynamic>;
+      final Timestamp bookingDate = data['bookingDate'] as Timestamp;
+      final DateTime dateTime = bookingDate.toDate();
+
+      return {
+        'id': doc.id,
+        'court': data['courtName'] ?? 'Unknown Court',
+        'date': _formatDate(bookingDate),
+        'time': data['timeSlot'] ?? 'No time specified',
+        'status': data['status'] ?? 'active',
+        'rawDateTime': dateTime,
+        'bookingUserName': data['bookingUserName'] ?? '',
+        'userId': data['userId'] ?? '',
+        'courtId': data['courtId'] ?? '',
+        'bookingTimestamp': data['bookingTimestamp'],
+      };
+    } catch (e) {
+      print('Error fetching booking by ID: $e');
+      return null;
+    }
+  }
 }
 
 
