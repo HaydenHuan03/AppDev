@@ -4,12 +4,12 @@ import 'package:utm_courtify/data/shopping_rental_data/rental_detail_service.dar
 
 class RentalDetailPage extends StatefulWidget {
   final String userName; // Pass name to this page
-  final String userMatricNumStaffID; // Pass matricNum/staffID to this page
+  final String userEmail; // Pass email to this page
 
   const RentalDetailPage({
     Key? key,
     required this.userName,
-    required this.userMatricNumStaffID,
+    required this.userEmail,
   }) : super(key: key);
 
   @override
@@ -27,10 +27,10 @@ class _RentalDetailPageState extends State<RentalDetailPage> {
     fetchRental();
   }
 
-  // Fetch rental numbers based on  matricNum/staffID
+  // Fetch rental numbers based on  email
   Future<void> fetchRental() async {
-    List<Map<String, dynamic>> result = await _rentalService
-        .fetchRentalNumbersByMatricID(widget.userMatricNumStaffID);
+    List<Map<String, dynamic>> result =
+        await _rentalService.fetchRentalNumbersByEmail(widget.userEmail);
 
     setState(() {
       rental = result;

@@ -35,7 +35,7 @@ class _SalePageState extends State<SalePage> {
 
   // Default user details - Sprint 3
   final String _userName = "Eddy Koh Wei Hen";
-  final String _userMatricNumStaffID = "A22EC0154";
+  final String _userEmail = "eddywei@graduate.utm.my";
 
   void _addToCart(Product product) {
     setState(() {
@@ -511,7 +511,7 @@ class _SalePageState extends State<SalePage> {
                   Expanded(
                     child: OrderHistoryPage(
                       userName: _userName,
-                      userMatricNumStaffID: _userMatricNumStaffID,
+                      userEmail: _userEmail,
                     ),
                   ),
                 ]
@@ -520,7 +520,7 @@ class _SalePageState extends State<SalePage> {
                   Expanded(
                     child: RentalDetailPage(
                       userName: _userName,
-                      userMatricNumStaffID: _userMatricNumStaffID,
+                      userEmail: _userEmail,
                     ),
                   ),
                 ] // Display when is in Sale/Rental page
