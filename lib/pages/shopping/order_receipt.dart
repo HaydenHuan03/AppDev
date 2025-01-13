@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:math';
 import 'package:utm_courtify/data/shopping_rental_data/product_data.dart';
 import 'package:utm_courtify/data/shopping_rental_data/order_service.dart';
@@ -32,9 +33,12 @@ class ReceiptPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final orderNumber = _generateOrderNumber();
-
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final User? currentUser = _auth.currentUser;
+    final String userId = currentUser?.uid ?? '';
     // Create order in database before showing receipt
     _orderService.createOrder(
+      userId: userId,
       orderNumber: orderNumber,
       name: name,
       idNumber: idNumber,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utm_courtify/data/shopping_rental_data/order_history_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class OrderHistoryPage extends StatefulWidget {
   final String userName;
@@ -19,6 +20,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
   final OrderHistoryService _orderService = OrderHistoryService();
   List<Map<String, dynamic>> orders = [];
   bool isLoading = true;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -27,8 +29,9 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
   }
 
   Future<void> fetchOrders() async {
+    // final User? currentUser = _auth.currentUser;
     List<Map<String, dynamic>> result =
-        await _orderService.fetchOrderNumbersByEmail(widget.userEmail);
+        await _orderService.fetchOrderNumbersByUserId();
 
     setState(() {
       orders = result;
