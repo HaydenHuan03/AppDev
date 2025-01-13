@@ -35,7 +35,7 @@ class _SalePageState extends State<SalePage> {
 
   // Default user details - Sprint 3
   final String _userName = "Eddy Koh Wei Hen";
-  final String _userEmail = "eddywei@graduate.utm.my";
+  final String _userEmail = "eddyi@graduate.utm.my";
 
   void _addToCart(Product product) {
     setState(() {
