@@ -196,12 +196,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
 @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+Widget build(BuildContext context) {
+  return Container(
+    color: Color(0xFF000000),
+    child: Scaffold(
+      backgroundColor: Color(0xFF000000),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0),
         child: AppBar(
           elevation: 0,
+          automaticallyImplyLeading: false,  // This will remove the back button
           backgroundColor: Color(0xFF000000),
           title: Row(
             children: [
@@ -506,8 +510,9 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: CustomNavigationBar(
         initialIndex: _currentIndex,
       ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildSupportButton(String text, IconData icon, VoidCallback onPressed) {
     return Container(
