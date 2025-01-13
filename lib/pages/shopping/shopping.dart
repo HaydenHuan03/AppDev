@@ -152,10 +152,10 @@ class _SalePageState extends State<SalePage> {
       },
     );
   }
-
+  // Changed due to integration
   // Dropdown menu - Sprint 3
   // Suggest: Simplified the method
-  
+
   /*  Widget _buildDropdownMenu() {
       // Sale page menu items
       List<Widget> salePageMenuItems = [
@@ -354,17 +354,18 @@ class _SalePageState extends State<SalePage> {
         _showDropdownMenu = false;
       });
     }
-    
+
     List<Widget> buildMenuItems(String type) {
-      return menuItems[type]!.map((item) => _buildDropdownMenuItem(
-        icon: item['icon'] as IconData,
-        title: item['title'] as String,
-        onTap: () => updateState(
-          item['title'] == 'Shopping Cart',
-          item['title'] == 'Order History',
-          item['title'] == 'Rental Detail'
-        ),
-      )).toList();
+      return menuItems[type]!
+          .map((item) => _buildDropdownMenuItem(
+                icon: item['icon'] as IconData,
+                title: item['title'] as String,
+                onTap: () => updateState(
+                    item['title'] == 'Shopping Cart',
+                    item['title'] == 'Order History',
+                    item['title'] == 'Rental Detail'),
+              ))
+          .toList();
     }
 
     List<Widget> getCurrentItems() {
@@ -386,7 +387,7 @@ class _SalePageState extends State<SalePage> {
         ),
         child: Column(children: getCurrentItems()),
       ),
-    );   
+    );
   }
 
   // Helper method to build dropdown menu items
@@ -420,278 +421,279 @@ class _SalePageState extends State<SalePage> {
   // Make changes in Sprint 3
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
+    return Scaffold(
+      appBar: AppBar(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-          )
-        ),
+            borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
+        )),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(251, 38, 38, 1),
         leading: IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/home');
-          } , 
-          icon: const Icon(Icons.arrow_back, color: Colors.white,)
-          ) ,
-        title: Text(
-          "Shopping Platform", 
-          style: TextStyle(
-            color: Colors.white, 
-            fontWeight: FontWeight.bold,
-            ),
-          ),
-                actions: [
-          IconButton(
-            icon: const Icon(Icons.list, color: Colors.white, size: 30),
             onPressed: () {
-              setState(() {
-                _showDropdownMenu = !_showDropdownMenu;
-              });
-            }
-          )
-        ],
-    ),
-    backgroundColor: Colors.black, // Set the desired background color
-    bottomNavigationBar: const CustomNavigationBar(initialIndex: 1),
-    body: SafeArea(
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              if (_showCart) ...[
-                // Cart view
-                Expanded(
-                  child: CartListWidget(
-                    cartItems: _cartItems,
-                    // Remove item from cart
-                    onRemoveFromCart: _removeFromCart,
-                  ),
-                ),
-                // Order Now bar - Only show when the cart list is no empty
-                //Click to proceed payment features
-                if (_cartItems.isNotEmpty)
-                  GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => PaymentDialog(
-                          cartItems: _cartItems,
-                          totalPrice: _calculateTotalPrice(),
-                          onClearCart: () {
-                            setState(() {
-                              _cartItems.clear();
-                            });
-                          },
-                        ),
-                      );
-                    },
-                    child: Container(
-                      color: Color(0xFFFB2626),
-                      width: 300, // width of buy now bar
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      margin: const EdgeInsets.only(top: 20, bottom: 20),
-                      child: Center(
-                        child: Text(
-                          'Order Now: RM ${_calculateTotalPrice().toStringAsFixed(2)}',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-              ] // Display when is in Order History page
-              else if (_showOrderHistory) ...[
-                Expanded(
-                  child: OrderHistoryPage(
-                    userName: _userName,
-                    userMatricNumStaffID: _userMatricNumStaffID,
-                  ),
-                ),
-              ]
-              // Display when is in Rental Detail page
-              else if (_showRentalDetail) ...[
-                Expanded(
-                  child: RentalDetailPage(
-                    userName: _userName,
-                    userMatricNumStaffID: _userMatricNumStaffID,
-                  ),
-                ),
-              ] // Display when is in Sale/Rental page
-              else ...[
-                // Help text
-                const Text(
-                  'How can I help you?',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
-                ),
-
-                // Sale/Rental toggle button
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 7.5, bottom: 20.0), //padding of toggle bar
-                  child: Center(
-                    child: Container(
-                      width: 250, // Fixed width for the toggle bar
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFFB2626), width: 2),
-                        borderRadius: BorderRadius.circular(7.5),
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: GestureDetector(
-                              // Show sale items
-                              onTap: () =>
-                                  setState(() => _showSaleItems = true),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical:
-                                        7.5), //padding of word in toggle bar
-                                decoration: BoxDecoration(
-                                  color: _showSaleItems
-                                      ? Color(0xFFFB2626)
-                                      : Colors.black,
-                                  borderRadius: const BorderRadius.horizontal(
-                                    left: Radius.circular(5),
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Sale',
-                                    style: TextStyle(
-                                      fontSize:
-                                          27.5, //size of "Sale" in toggle bar
-                                      // When display sale, the sale word black, rental word white
-                                      color: _showSaleItems
-                                          ? Colors.black
-                                          : Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: GestureDetector(
-                              // show rental item
-                              onTap: () =>
-                                  setState(() => _showSaleItems = false),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical:
-                                        7.5), //padding of word in toggle bar
-                                decoration: BoxDecoration(
-                                  color: !_showSaleItems
-                                      ? Color(0xFFFB2626)
-                                      : Colors.black,
-                                  borderRadius: const BorderRadius.horizontal(
-                                    right: Radius.circular(5),
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Rental',
-                                    style: TextStyle(
-                                      fontSize:
-                                          27.5, //size of "Rental" in toggle bar
-                                      // When display rental, the rental word black, sale word white
-                                      color: !_showSaleItems
-                                          ? Colors.black
-                                          : Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-
-                // Show categories and products if in Sale view
-                if (_showSaleItems) ...[
-                  Container(
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        border: Border.symmetric(
-                          horizontal: BorderSide(
-                              color: Color(0xFFFFB2626),
-                              width: 2), // Only top and bottom borders),
-                          //borderRadius: BorderRadius.circular(7.5),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          _buildCategoryIcon(
-                              'assets/images/icons/SaleCategories/Badmintion_Icon.png',
-                              'racquet',
-                              'Racquet'),
-                          _buildCategoryIcon(
-                              'assets/images/icons/SaleCategories/Shuttlecock_Icon.png',
-                              'shuttlecock',
-                              'Shuttlecock'),
-                          _buildCategoryIcon(
-                              'assets/images/icons/SaleCategories/Shirt_Icon.png',
-                              'shirt',
-                              'Shirt'),
-                          _buildCategoryIcon(
-                              'assets/images/icons/SaleCategories/Snacks_Icon.png',
-                              'snacks',
-                              'Snacks'),
-                          _buildCategoryIcon(
-                              'assets/images/icons/SaleCategories/Drinks_Icon.png',
-                              'drinks',
-                              'Drinks'),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  // Product list
-                  Expanded(
-                    child: _buildProductList(),
-                  ),
-                ] else ...[
-                  Container(
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        border: Border.symmetric(
-                          horizontal: BorderSide(
-                              color: Color(0xFFFFB2626),
-                              width: 2), // Only top and bottom borders),
-                          //borderRadius: BorderRadius.circular(7.5),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  // Rent item list
-                  Expanded(
-                    child: _buildRentItemList(),
-                  ),
-                ],
-              ]
-            ],
+              Navigator.pushNamed(context, '/home');
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            )),
+        title: Text(
+          "Shopping Platform",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
-          // Dropdown menu overlay
-          if (_showDropdownMenu) _buildDropdownMenu(),
+        ),
+        actions: [
+          IconButton(
+              icon: const Icon(Icons.list, color: Colors.white, size: 30),
+              onPressed: () {
+                setState(() {
+                  _showDropdownMenu = !_showDropdownMenu;
+                });
+              })
         ],
       ),
-    ),
-  );
+      backgroundColor: Colors.black, // Set the desired background color
+      bottomNavigationBar: const CustomNavigationBar(initialIndex: 1),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                if (_showCart) ...[
+                  // Cart view
+                  Expanded(
+                    child: CartListWidget(
+                      cartItems: _cartItems,
+                      // Remove item from cart
+                      onRemoveFromCart: _removeFromCart,
+                    ),
+                  ),
+                  // Order Now bar - Only show when the cart list is no empty
+                  //Click to proceed payment features
+                  if (_cartItems.isNotEmpty)
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => PaymentDialog(
+                            cartItems: _cartItems,
+                            totalPrice: _calculateTotalPrice(),
+                            onClearCart: () {
+                              setState(() {
+                                _cartItems.clear();
+                              });
+                            },
+                          ),
+                        );
+                      },
+                      child: Container(
+                        color: Color(0xFFFB2626),
+                        width: 300, // width of buy now bar
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        margin: const EdgeInsets.only(top: 20, bottom: 20),
+                        child: Center(
+                          child: Text(
+                            'Order Now: RM ${_calculateTotalPrice().toStringAsFixed(2)}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                ] // Display when is in Order History page
+                else if (_showOrderHistory) ...[
+                  Expanded(
+                    child: OrderHistoryPage(
+                      userName: _userName,
+                      userMatricNumStaffID: _userMatricNumStaffID,
+                    ),
+                  ),
+                ]
+                // Display when is in Rental Detail page
+                else if (_showRentalDetail) ...[
+                  Expanded(
+                    child: RentalDetailPage(
+                      userName: _userName,
+                      userMatricNumStaffID: _userMatricNumStaffID,
+                    ),
+                  ),
+                ] // Display when is in Sale/Rental page
+                else ...[
+                  // Help text
+                  const Text(
+                    'How can I help you?',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                  ),
+
+                  // Sale/Rental toggle button
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 7.5, bottom: 20.0), //padding of toggle bar
+                    child: Center(
+                      child: Container(
+                        width: 250, // Fixed width for the toggle bar
+                        decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Color(0xFFFB2626), width: 2),
+                          borderRadius: BorderRadius.circular(7.5),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                // Show sale items
+                                onTap: () =>
+                                    setState(() => _showSaleItems = true),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical:
+                                          7.5), //padding of word in toggle bar
+                                  decoration: BoxDecoration(
+                                    color: _showSaleItems
+                                        ? Color(0xFFFB2626)
+                                        : Colors.black,
+                                    borderRadius: const BorderRadius.horizontal(
+                                      left: Radius.circular(5),
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Sale',
+                                      style: TextStyle(
+                                        fontSize:
+                                            27.5, //size of "Sale" in toggle bar
+                                        // When display sale, the sale word black, rental word white
+                                        color: _showSaleItems
+                                            ? Colors.black
+                                            : Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                // show rental item
+                                onTap: () =>
+                                    setState(() => _showSaleItems = false),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical:
+                                          7.5), //padding of word in toggle bar
+                                  decoration: BoxDecoration(
+                                    color: !_showSaleItems
+                                        ? Color(0xFFFB2626)
+                                        : Colors.black,
+                                    borderRadius: const BorderRadius.horizontal(
+                                      right: Radius.circular(5),
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Rental',
+                                      style: TextStyle(
+                                        fontSize:
+                                            27.5, //size of "Rental" in toggle bar
+                                        // When display rental, the rental word black, sale word white
+                                        color: !_showSaleItems
+                                            ? Colors.black
+                                            : Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // Show categories and products if in Sale view
+                  if (_showSaleItems) ...[
+                    Container(
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          border: Border.symmetric(
+                            horizontal: BorderSide(
+                                color: Color(0xFFFFB2626),
+                                width: 2), // Only top and bottom borders),
+                            //borderRadius: BorderRadius.circular(7.5),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            _buildCategoryIcon(
+                                'assets/images/icons/SaleCategories/Badmintion_Icon.png',
+                                'racquet',
+                                'Racquet'),
+                            _buildCategoryIcon(
+                                'assets/images/icons/SaleCategories/Shuttlecock_Icon.png',
+                                'shuttlecock',
+                                'Shuttlecock'),
+                            _buildCategoryIcon(
+                                'assets/images/icons/SaleCategories/Shirt_Icon.png',
+                                'shirt',
+                                'Shirt'),
+                            _buildCategoryIcon(
+                                'assets/images/icons/SaleCategories/Snacks_Icon.png',
+                                'snacks',
+                                'Snacks'),
+                            _buildCategoryIcon(
+                                'assets/images/icons/SaleCategories/Drinks_Icon.png',
+                                'drinks',
+                                'Drinks'),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    // Product list
+                    Expanded(
+                      child: _buildProductList(),
+                    ),
+                  ] else ...[
+                    Container(
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          border: Border.symmetric(
+                            horizontal: BorderSide(
+                                color: Color(0xFFFFB2626),
+                                width: 2), // Only top and bottom borders),
+                            //borderRadius: BorderRadius.circular(7.5),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // Rent item list
+                    Expanded(
+                      child: _buildRentItemList(),
+                    ),
+                  ],
+                ]
+              ],
+            ),
+            // Dropdown menu overlay
+            if (_showDropdownMenu) _buildDropdownMenu(),
+          ],
+        ),
+      ),
+    );
   }
 
   // About sale category icon
