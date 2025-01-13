@@ -3,12 +3,12 @@ import 'package:utm_courtify/data/shopping_rental_data/order_history_service.dar
 
 class OrderHistoryPage extends StatefulWidget {
   final String userName;
-  final String userMatricNumStaffID;
+  final String userEmail;
 
   const OrderHistoryPage({
     Key? key,
     required this.userName,
-    required this.userMatricNumStaffID,
+    required this.userEmail,
   }) : super(key: key);
 
   @override
@@ -27,8 +27,8 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
   }
 
   Future<void> fetchOrders() async {
-    List<Map<String, dynamic>> result = await _orderService
-        .fetchOrderNumbersByMatricID(widget.userMatricNumStaffID);
+    List<Map<String, dynamic>> result =
+        await _orderService.fetchOrderNumbersByEmail(widget.userEmail);
 
     setState(() {
       orders = result;
@@ -64,7 +64,8 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                         decoration: BoxDecoration(
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0xFFFB2626), width: 2),
+                          border:
+                              Border.all(color: Color(0xFFFB2626), width: 2),
                         ),
                         child: const Text(
                           'No orders found',
