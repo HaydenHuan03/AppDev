@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:math';
 import 'package:utm_courtify/data/shopping_rental_data/rent_item_data.dart';
 import 'package:utm_courtify/data/shopping_rental_data/rental_service.dart';
@@ -30,9 +31,13 @@ class RentalReceipt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final rentalNumber = _generateRentalNumber();
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final User? currentUser = _auth.currentUser;
+    final String userId = currentUser?.uid ?? '';
 
     // Create rental in database before showing receipt
     _rentalService.createRental(
+      userId: userId,
       rentalNumber: rentalNumber,
       name: name,
       idNumber: idNumber,

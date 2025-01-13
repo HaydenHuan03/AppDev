@@ -99,7 +99,7 @@ class RentItemWidget extends StatelessWidget {
                 'Rent Now',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 30,
+                  fontSize: 23,
                   fontWeight: FontWeight.bold,
                 ),
               ),

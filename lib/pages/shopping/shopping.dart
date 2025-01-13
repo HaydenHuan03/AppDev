@@ -33,9 +33,9 @@ class _SalePageState extends State<SalePage> {
   bool _showOrderHistory = false; //Sprint 3
   bool _showRentalDetail = false; //Sprint 3
 
-  // Default user details - Sprint 3
-  final String _userName = "Eddy Koh Wei Hen";
-  final String _userEmail = "eddyi@graduate.utm.my";
+  // Default user details
+  final String _userName = "";
+  final String _userEmail = "";
 
   void _addToCart(Product product) {
     setState(() {

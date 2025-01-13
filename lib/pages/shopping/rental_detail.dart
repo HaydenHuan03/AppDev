@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:utm_courtify/data/shopping_rental_data/rental_detail_service.dart';
 
 class RentalDetailPage extends StatefulWidget {
@@ -20,6 +21,7 @@ class _RentalDetailPageState extends State<RentalDetailPage> {
   final RentalDetailService _rentalService = RentalDetailService();
   List<Map<String, dynamic>> rental = [];
   bool isLoading = true;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -27,10 +29,10 @@ class _RentalDetailPageState extends State<RentalDetailPage> {
     fetchRental();
   }
 
-  // Fetch rental numbers based on  email
+  // Fetch rental numbers based on user ID
   Future<void> fetchRental() async {
     List<Map<String, dynamic>> result =
-        await _rentalService.fetchRentalNumbersByEmail(widget.userEmail);
+        await _rentalService.fetchRentalNumbersByUserId();
 
     setState(() {
       rental = result;

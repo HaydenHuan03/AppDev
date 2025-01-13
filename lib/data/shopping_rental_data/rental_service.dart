@@ -1,8 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'rent_item_data.dart';
 
 class RentalService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<Map<String, dynamic>?> _getCurrentUserData() async {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        final userDoc = await _firestore.collection('users').doc(user.uid).get();
+        if (userDoc.exists) {
+          return {
+            'userId': user.uid,
+            'userName': userDoc.data()?['displayName'] ?? 'Unknown User',
+            'userEmail': user.email,
+          };
+        }
+      }
+      return null;
+    } catch (e) {
+      print('Error getting user data: $e');
+      return null;
+    }
+  }
 
   Future<void> createRental({
     required String rentalNumber,
@@ -12,10 +34,16 @@ class RentalService {
     required double price,
     required RentItem rentItem,
     required bool returnItem,
+    required String userId,
   }) async {
     try {
+      final userData = await _getCurrentUserData();
+      if (userData == null) {
+        throw Exception('User data not found');
+      }
       // Prepare rental details
       Map<String, dynamic> rentalData = {
+        'userId': userId,
         'rentalNumber': rentalNumber,
         'name': name,
         'email': email,
