@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utm_courtify/pages/home_screen.dart';
+import 'package:utm_courtify/pages/home/home_screen.dart';
 import 'package:utm_courtify/pages/user/register_screen.dart';
 import 'package:utm_courtify/data/user_data/firebase_login_service.dart';
 
