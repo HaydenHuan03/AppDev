@@ -41,10 +41,10 @@ class _RentalDetailPageState extends State<RentalDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Column(
         children: [
           Container(
-            color: Color(0xFFFB2626),
             padding: const EdgeInsets.all(10),
             margin: const EdgeInsets.only(top: 5),
             child: const Center(

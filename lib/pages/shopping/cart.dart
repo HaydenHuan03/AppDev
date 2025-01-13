@@ -20,7 +20,6 @@ class CartListWidget extends StatelessWidget {
             children: [
               // "Cart List" container
               Container(
-                color: Color(0xFFFB2626),
                 padding: const EdgeInsets.all(10),
                 margin: const EdgeInsets.only(top: 5),
                 child: const Center(
