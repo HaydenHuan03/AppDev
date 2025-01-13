@@ -196,11 +196,17 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
 @override
+<<<<<<< HEAD:lib/pages/home_screen.dart
 Widget build(BuildContext context) {
   return Container(
     color: Color(0xFF000000),
     child: Scaffold(
       backgroundColor: Color(0xFF000000),
+=======
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+>>>>>>> c600cd73572be5994b0e99dab50e69dfd960076f:lib/pages/home/home_screen.dart
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0),
         child: AppBar(

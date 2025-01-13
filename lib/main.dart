@@ -5,7 +5,7 @@ import 'package:utm_courtify/pages/shopping/shopping.dart';
 import 'package:utm_courtify/pages/booking/show_available_court.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'pages/home_screen.dart';
+import 'pages/home/home_screen.dart';
 import 'pages/user/password_reset_screen.dart';
 import 'pages/user/profile_screen.dart';
 import 'pages/user/register_screen.dart';
