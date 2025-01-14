@@ -173,6 +173,7 @@ class CourtBookingService {
 
       final querySnapshot = await _firestore
           .collection('court_bookings')
+          .where('status', isEqualTo: 'active')
           .where('userId', isEqualTo: userData['userId'])
           .orderBy('bookingDate', descending: true)
           .get();

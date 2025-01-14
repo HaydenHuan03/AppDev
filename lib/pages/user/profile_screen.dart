@@ -148,6 +148,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final CourtBookingService _bookingService = CourtBookingService();
+  Key _futureBuilderKey = UniqueKey();
   bool _isEditing = false;
   
   // Controllers for editable fields
@@ -174,6 +175,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     _loadUserProfile();
+  }
+
+  void refreshBookings(){
+    setState(() {
+      _futureBuilderKey = UniqueKey();
+    });
   }
 
   Future<void> _loadUserProfile() async {
@@ -426,7 +433,7 @@ Widget _buildBookingHistory() {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => BookingRecord()),
-                    );
+                    ).then((_) => refreshBookings());
                   },
                   child: Text(
                     "Show all",
@@ -437,6 +444,7 @@ Widget _buildBookingHistory() {
             ),
           ),
           FutureBuilder<List<Map<String, dynamic>>>(
+            key: _futureBuilderKey,
             future: _bookingService.getUserBookings(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
@@ -469,7 +477,7 @@ Widget _buildBookingHistory() {
                   padding: EdgeInsets.all(16),
                   child: Center(
                     child: Text(
-                      "No upcoming bookings",
+                      "No bookings",
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),
